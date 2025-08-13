@@ -1,0 +1,13 @@
+✓ replace img tag with Image component provided by nextjs for better and optimised performance of images
+✓ fix aspect ratio issue with all images (ideally aspect ratio should not change)
+✓ update date time year
+- heading changes
+✓ sponser section changes required
+- cleanup public folder to remove extra content
+- overall cleanup and refactoring required
+✓ use include logo with less size
+- add form for contact us ? (to be confirmed)
+- better look for hero page (too big font size for both lines doesn't look good)
+
+- use fixed(constant) size for heading's top and bottom heading
+- Mobile View: make navbar to cover full screen height when toggled on and all items should be justified center and remove horizontal lines from social component in navbar

@@ -1,0 +1,14 @@
+.vara_container>svg {
+    overflow: visible;
+}
+
+.outerContainer {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerContainer {
+    width: 100%;
+}

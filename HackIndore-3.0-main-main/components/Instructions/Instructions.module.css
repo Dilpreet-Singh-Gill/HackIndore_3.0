@@ -1,0 +1,51 @@
+.container {
+  margin: 40px 0;
+}
+.instructions {
+  word-spacing: 2px;
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  padding: 15px;
+  width: 50% !important;
+}
+
+.image {
+  width: 50% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.img {
+  width: 100% !important;
+  border-radius: 18px;
+}
+
+@media only screen and (max-width: 900px) {
+  .instructionContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    width: 100% !important;
+  }
+  .instructions {
+    width: 100% !important;
+  }
+  .image {
+    width: 100% !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .instructions {
+    padding: 0 15px;
+    /* text-align:start; */
+  }
+}
+
+.instructions > p:first-of-type {
+  margin: 0 !important;
+}

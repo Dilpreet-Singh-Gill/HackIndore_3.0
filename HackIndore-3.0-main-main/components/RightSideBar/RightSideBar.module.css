@@ -1,0 +1,49 @@
+.txt {
+    font-family: 'Ubuntu', cursive;
+    text-transform: uppercase;
+}
+
+.StyledSideElement {
+    width: 40px;
+    position: fixed;
+    top: 3.5rem;
+    z-index: 10000;
+    /* color: #a8b2d1; */
+    color:yellow;
+}
+
+.right {
+    right: 40px;
+    left: auto;
+}
+
+@media (max-width: 1080px) {
+    .right {
+        right: 20px;
+        left: auto;
+    }
+}
+
+
+@media (max-width: 991px) {
+    .StyledSideElement {
+        display: none;
+    }
+}
+
+.StyledSocialList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.StyledSocialList li:last-of-type {
+    margin-bottom: 20px;
+}
+
+.StyledSocialList li:first-of-type {
+    margin-top: 20px;
+}

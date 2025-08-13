@@ -1,0 +1,483 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Ubuntu:wght@400;500&display=swap");
+
+:root {
+  --green: #64ffda;
+  --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  --light-slate: #a8b2d1;
+  --max-width: 1100px;
+  --border-radius: 12px;
+
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+
+  --clr-primary: #fc307b;
+  --clr-accent: #2c92ef;
+
+  --fs700: 3.5rem;
+  --fs-400: 1.25rem;
+
+  --primary-glow: conic-gradient(from 180deg at 50% 50%,
+      #16abff33 0deg,
+      #0885ff33 55deg,
+      #54d6ff33 120deg,
+      #0071ff33 160deg,
+      transparent 360deg);
+  --secondary-glow: radial-gradient(rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0));
+
+  --tile-start-rgb: 239, 245, 249;
+  --tile-end-rgb: 228, 232, 233;
+  --tile-border: conic-gradient(#00000080,
+      #00000040,
+      #00000030,
+      #00000020,
+      #00000010,
+      #00000010,
+      #00000080);
+
+  --callout-rgb: 238, 240, 241;
+  --callout-border-rgb: 172, 175, 176;
+  --card-rgb: 180, 185, 188;
+  --card-border-rgb: 131, 134, 135;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth !important;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 0;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-size: var(--fs-400);
+  padding: 0;
+  font-family: "Poppins", sans-serif !important;
+  overflow-x: hidden;
+}
+
+.heading {
+  top: 30px !important;
+  margin: 20px auto !important;
+  text-align: center !important;
+  margin-bottom: 50px !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+
+    --primary-glow: radial-gradient(rgba(0, 2, 8, 0.9), rgba(1, 65, 255, 0));
+    --secondary-glow: linear-gradient(to bottom right,
+        rgba(1, 65, 255, 0),
+        rgba(1, 65, 255, 0),
+        rgba(1, 65, 255, 0.3));
+
+    --tile-start-rgb: 2, 13, 46;
+    --tile-end-rgb: 2, 5, 19;
+    --tile-border: conic-gradient(#ffffff80,
+        #ffffff40,
+        #ffffff30,
+        #ffffff20,
+        #ffffff10,
+        #ffffff10,
+        #ffffff80);
+
+    --callout-rgb: 20, 20, 20;
+    --callout-border-rgb: 108, 108, 108;
+    --card-rgb: 100, 100, 100;
+    --card-border-rgb: 200, 200, 200;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+body {
+  color: white !important;
+  background-image: linear-gradient(to right bottom,
+      #190031,
+      #260d44,
+      #361857,
+      #46236c,
+      #572e81,
+      #562f7d,
+      #542f7a,
+      #533076,
+      #3f265a,
+      #2d1c3f,
+      #1c1225,
+      #06000b);
+  /* background: linear-gradient(109.6deg, rgb(45, 11, 92) 11.2%, rgb(144, 6, 161) 58.7%, #003ba9 100.2%); */
+  /* background: linear-gradient(91.1deg, rgb(57, 31, 105) -2.3%, rgb(115, 43, 155) 44.4%, rgb(63, 15, 135) 103.4%); */
+
+
+  min-height: 100vh;
+  background-attachment: fixed;
+  /*TODO remove*/
+}
+
+
+/* Customizing Scroll Bar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: hsl(267, 68%, 16%);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: hsl(298, 70%, 50%);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(298, 70%, 45%);
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.fixed {
+  height: 60px;
+}
+
+.react-images__view {
+  display: flex;
+  justify-content: center;
+}
+
+.mainComponent {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1600px;
+  min-height: 100vh;
+  padding: 0 150px;
+}
+
+@media (max-width: 1080px) {
+  .mainComponent {
+    padding: 0 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainComponent {
+    padding: 0 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainComponent {
+    padding: 0 10px;
+  }
+}
+
+.headings_glittered {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.headings_glittered h1 {
+  font-size: 3rem;
+  line-height: 1;
+  font-weight: 600;
+  margin-bottom: 0;
+  font-family: "Overpass", sans-serif;
+}
+
+/* ------------------------------------------------ */
+
+#home_route>section,
+footer {
+  padding-top: 7rem;
+}
+
+#home_route>section:first-of-type {
+  padding-top: 5rem;
+}
+
+/* ------------------------------------------------ */
+
+.bg-gradient {
+  -moz-box-shadow: 6px 11px 69px 25px rgba(255, 255, 255, 0.19) !important;
+  box-shadow: 6px 11px 69px 25px rgba(255, 255, 255, 0.19) !important;
+}
+
+/* ---------------------- Transitions ---------------------- */
+/* --------------------------------------------------------- */
+/* Fade up */
+.fadeup-enter {
+  opacity: 0.01;
+  transform: translateY(20px);
+  transition: opacity 300ms var(--easing), transform 300ms var(--easing);
+}
+
+.fadeup-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity 300ms var(--easing), transform 300ms var(--easing);
+}
+
+/* Fade down */
+.fadedown-enter {
+  opacity: 0.01;
+  transform: translateY(-20px);
+  transition: opacity 300ms var(--easing), transform 300ms var(--easing);
+}
+
+.fadedown-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity 300ms var(--easing), transform 300ms var(--easing);
+}
+
+/* Fade */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms var(--easing);
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms var(--easing);
+}
+
+/* Fade right */
+.faderight-enter {
+  opacity: 0.01;
+  transform: translateX(-20px);
+  transition: opacity 300ms var(--easing), transform 300ms var(--easing);
+}
+
+.faderight-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity 300ms var(--easing), transform 300ms var(--easing);
+}
+
+/* Fade left */
+.fadeleft-enter {
+  opacity: 0.01;
+  transform: translateX(20px);
+  transition: opacity 300ms var(--easing), transform 300ms var(--easing);
+}
+
+.fadeleft-enter-active {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: opacity 300ms var(--easing), transform 300ms var(--easing);
+}
+
+/* ------------------------------------------------ */
+
+.font {
+  font-family: "Poppins", sans-serif !important;
+}
+
+/* ------------------------------------------------ */
+
+.react-photo-gallery--gallery {
+  pointer-events: none;
+}
+
+/* ------------------------------------------------ */
+
+.scramblingText_text {
+  font-weight: 100;
+  color: #FAFAFA;
+}
+
+.scramblingText_dud {
+  color: #757575d0;
+}
+
+/* .navbar-navbar-nav .navbar-nav-link.active {
+  color: rgb(179, 250, 255) !important;
+}
+a {
+  text-decoration: none;
+}
+.navbar-nav li {
+  position: relative;
+} */
+
+/* for left to right effect */
+
+/* .navbar-nav a::before {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: 5px;
+  left: 0;
+  background-color: rgb(179, 250, 255);
+  visibility: hidden;
+  transform: scaleX(1);
+  transition: all 0.3s ease-in-out 0s;
+}
+.navbar-nav .active::before {
+  visibility: visible;
+  transform: scaleX(1);
+  width: 100%;
+  color: rgb(179, 250, 255) !important;
+} */
+
+/* for center grow effect
+
+.navbar-nav a::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 5px;
+  left: 0;
+  background-color: rgb(179, 250, 255);
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
+}
+.navbar-nav .active::before {
+  visibility: visible;
+  transform: scaleX(1);
+  color: rgb(179, 250, 255) !important;
+} */
+
+/* .navbar-nav li {
+  display: inline-block;
+}
+
+.navbar-nav ::before {
+  visibility: visible;
+  transform: scaleX(1)
+} */
+
+.active {
+  color: rgb(179, 250, 255) !important;
+}
+
+ul li {
+  list-style: none;
+  display: inline-block;
+}
+
+ul li a {
+  text-decoration: none;
+  position: relative;
+  display: block;
+}
+
+ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0px;
+  bottom: 5px;
+  width: 100%;
+  height: 2px;
+  background-color: rgb(179, 250, 255);
+  transform-origin: top right;
+  transition: transform 0.5s ease;
+  transform: scaleX(0);
+}
+
+ul .active::after {
+  transform-origin: bottom left;
+  transform: scaleX(1);
+}
+
+ul li:hover::after {
+  transform-origin: top left;
+  transform: scaleX(1);
+}

@@ -1,0 +1,105 @@
+.copyright {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+.cwrapper {
+  padding: 0 1rem;
+}
+
+.light {
+  font-weight: 100;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.small {
+  font-size: 18px;
+  margin-bottom: 0px !important;
+}
+
+.ending {
+  font-size: 13px;
+  text-align: center;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.ending1 {
+  font-size: 16px;
+  text-align: center;
+}
+
+.main {
+  font-size: 20px;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.small1 {
+  font-size: 16px;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.none {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.email_link {
+  /* --color: #64ffda; */
+  /* --bg-color: #64ffda1a; */
+  --color: rgb(179, 250, 255);
+  --bg-color: rgba(179, 250, 255, 0.1);
+
+  color: var(--color);
+  border: 2px solid var(--color);
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-family: inherit;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+
+  display: inline-block;
+  text-decoration-skip-ink: auto;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.email_link:hover,
+.email_link:focus,
+.email_link:active {
+  outline: none;
+  color: var(--color);
+  background-color: var(--bg-color);
+}
+
+@media only screen and (max-width: 596px) {
+  .responsive {
+    padding-top: 80px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+.ending2 {
+  margin-bottom: 0 !important;
+}
+
+.small1 {
+  /* font-family: "Ubuntu", sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: wheat !important; */
+  font: small-caps bold 23px/120% "Ubuntu", sans-serif;
+  color: rgb(201, 255, 255) !important;
+  letter-spacing: 1px;
+}

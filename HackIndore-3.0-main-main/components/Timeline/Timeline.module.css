@@ -1,0 +1,205 @@
+#app {
+  padding: 0 20px;
+  width: 100%;
+}
+
+.timelineContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 40px 0;
+}
+
+.timelineContainer::after {
+  /* background: linear-gradient(
+    195deg,
+    hsl(293deg 99% 48%) 0%,
+    hsl(287deg 89% 59%) 6%,
+    hsl(281deg 87% 63%) 11%,
+    hsl(274deg 86% 67%) 17%,
+    hsl(265deg 85% 70%) 22%,
+    hsl(254deg 84% 72%) 28%,
+    hsl(239deg 83% 74%) 33%,
+    hsl(225deg 85% 70%) 39%,
+    hsl(214deg 88% 65%) 44%,
+    hsl(204deg 90% 57%) 50%,
+    hsl(214deg 74% 66%) 56%,
+    hsl(227deg 57% 69%) 61%,
+    hsl(251deg 42% 70%) 67%,
+    hsl(278deg 35% 66%) 72%,
+    hsl(305deg 34% 63%) 78%,
+    hsl(321deg 48% 65%) 83%,
+    hsl(330deg 63% 65%) 89%,
+    hsl(335deg 77% 66%) 94%,
+    hsl(338deg 90% 65%) 100%
+  );; */
+  background: linear-gradient(to bottom,
+      #ff6b6b 0%,
+      #b66dff 25%,
+      #6b73ff 50%,
+      #6bc1ff 75%,
+      #56ff8c 100%);
+  content: "";
+  position: absolute;
+  left: calc(50% - 2px);
+  width: 4px;
+  height: 100%;
+}
+
+.timelineItemContent .circle {
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: calc(50% - 10px);
+  right: -40px;
+  width: 20px;
+  height: 20px;
+  z-index: 100;
+}
+
+.timelineItemContent::after {
+  content: " ";
+  background: rgba(255, 255, 255, 0.15);
+  position: absolute;
+  right: -7.5px;
+  top: calc(50% - 7.5px);
+  transform: rotate(45deg);
+  width: 15px;
+  height: 15px;
+}
+
+.timelineItem {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+  position: relative;
+  margin: 10px 0;
+  width: 50%;
+}
+
+.timelineItem:nth-child(odd) {
+  align-self: flex-end;
+  justify-content: flex-start;
+  padding-left: 30px;
+  padding-right: 0;
+}
+
+.timelineItemContent {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 15px;
+  position: relative;
+  width: 16rem;
+  max-width: 70%;
+  text-align: right;
+  background: rgba(255, 255, 255, 0.15);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+  /* backdrop-filter: blur(9px); */
+  /* -webkit-backdrop-filter: blur(9px); */
+  border-radius: 10px;
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  z-index: 1;
+
+  box-shadow: none !important;
+}
+
+.timelineItem:nth-child(odd) .timelineItemContent {
+  text-align: left;
+  align-items: flex-start;
+}
+
+.timelineItem:nth-child(odd) .timelineItemContent::after {
+  right: auto;
+  left: -7.5px;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.timelineItemContent .tag {
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  top: 5px;
+  left: 5px;
+  letter-spacing: 1px;
+  padding: 5px;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.timelineItem:nth-child(odd) .timelineItemContent .tag {
+  left: auto;
+  right: 5px;
+}
+
+.timelineItemContent time {
+  color: #87CEEB;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.timelineItemContent p {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 10px;
+  max-width: 250px;
+}
+
+.timelineItemContent a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.timelineItemContent a::after {
+  content: " ►";
+  font-size: 12px;
+}
+
+
+.timelineItem:nth-child(odd) .timelineItemContent .circle {
+  right: auto;
+  left: -40px;
+}
+
+
+@media only screen and (max-width: 1023px) {
+  .timelineItemContent {
+    max-width: 100%;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  .timelineContainer {
+    margin: 10px 20px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+
+  .timelineItemContent,
+  .timelineItem:nth-child(odd) .timelineItemContent {
+    padding: 15px 10px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .timelineItemContent .tag {
+    width: calc(100% - 10px);
+    text-align: center;
+  }
+
+  .timelineItemContent time {
+    margin-top: 20px;
+  }
+
+  .timelineItemContent a {
+    text-decoration: underline;
+  }
+
+  .timelineItemContent a::after {
+    display: none;
+  }
+}

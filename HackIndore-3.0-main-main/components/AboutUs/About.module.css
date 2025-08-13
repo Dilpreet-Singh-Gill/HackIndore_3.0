@@ -1,0 +1,30 @@
+.small {
+  font-size: 18px;
+}
+.medium {
+  font-size: 20px;
+}
+
+.text {
+  width: 50% !important;
+}
+.image {
+  width: 50% !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img {
+  width: 100% !important;
+  border-radius: 18px;
+}
+
+@media only screen and (max-width: 991px) {
+  .text {
+    width: 100% !important;
+  }
+  .image {
+    width: 100% !important;
+  }
+}
