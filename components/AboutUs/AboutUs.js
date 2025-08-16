@@ -1,35 +1,43 @@
 import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import Container from "../Container/Container";
-import AnimatedText from "../AnimatedText/AnimatedText";
-import styles from "./About.module.css";
-import useScrollReveal from "@/hooks/useScrollReveal";
-import { useMediaQuery } from "@mui/material";
 import { Stack } from "@mui/system";
 import Heading from "../Heading/Heading";
-import Image from "next/image";
+import styles from "./About.module.css";
+import useScrollReveal from "@/hooks/useScrollReveal";
+import { motion } from "framer-motion";
+import {
+  SiReact,
+  SiNodedotjs,
+  SiPython,
+  SiMongodb,
+  SiJavascript,
+  SiGit,
+} from "react-icons/si";
 
 const AboutUs = () => {
   const revealContainer = useScrollReveal();
 
+  const techIcons = [
+    { Icon: SiReact, color: "#61DAFB" },
+    { Icon: SiNodedotjs, color: "#68A063" },
+    { Icon: SiPython, color: "#FFD43B" },
+    { Icon: SiMongodb, color: "#47A248" },
+    { Icon: SiJavascript, color: "#F7DF1E" },
+    { Icon: SiGit, color: "#F05032" },
+  ];
+
   return (
     <section id="aboutus" ref={revealContainer}>
-      {/* <div className="headings_glittered">
-                <AnimatedText>
-                    <h1>About Us</h1>
-                </AnimatedText>
-            </div> */}
       <div className="headings_glittered">
         <Heading>About Us</Heading>
       </div>
+
       <Stack
         direction={{ md: "row", xs: "column-reverse" }}
         gap={1}
         className={styles.AboutContainer}
       >
+        {/* LEFT TEXT */}
         <Stack
           direction={"column"}
           gap={5}
@@ -39,138 +47,60 @@ const AboutUs = () => {
           className={styles.text}
         >
           <p className={styles.medium}>
-            We are club #include, the official techno learning club of
-            Information Technology Department, SGSITS. We believe in empowering
-            individuals to explore and master the world of technology.
+            The Information Technology Department of SGSITS is organizing a hackathon to empower
+            individuals to explore, innovate, and master the world of technology.
           </p>
           <p className={styles.small}>
-            At #include, we understand that technology is the driving force of
-            the modern world, and as such, we strive to create a community where
-            individuals can learn, grow, and thrive in this field. Our goal is
-            to equip members with the necessary skills and knowledge to excel in
-            the tech industry and beyond.
+            We believe that technology is the driving force of the modern world, and through this
+            event, we aim to create a vibrant community where participants can learn, collaborate,
+            and showcase their creativity.
+            <br />
+            <br />
+            Our goal is to equip students with the skills, experience, and confidence needed to
+            excel in the tech industry and beyond, while fostering innovation, problem-solving, and
+            teamwork.
           </p>
         </Stack>
-        <div className={styles.image}>
-          <Image
-            src="/images/Team_image2.png"
-            alt="Team"
-            className={styles.img}
-            sizes="100vw"
-            height={0}
-            width={0}
-            style={{ height: "auto", width: "100%" }}
-          />
-        </div>
+
+        {/* RIGHT TECH ICONS GRID */}
+        {/* RIGHT TECH ICONS CLOUD */}
+        <Box
+          className={styles.iconsContainer}
+          sx={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)", // 3 icons per row
+            gap: "20px", // space between items
+            padding: "20px",
+            justifyItems: "center", // center icons horizontally
+          }}
+        >
+          {techIcons.map(({ Icon, color }, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.2, rotate: 5 }}
+              animate={{ y: [0, -12, 0] }}
+              transition={{ repeat: Infinity, duration: 3, delay: i * 0.2 }}
+              style={{
+                background: "rgba(0, 0, 0, 0.7)",
+                padding: "25px",
+                borderRadius: "20px",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "90px",
+                height: "90px",
+                boxShadow: `0 0 25px ${color}`,
+                transition: "all 0.3s ease-in-out",
+              }}
+            >
+              <Icon size={50} color={color} />
+            </motion.div>
+          ))}
+        </Box>
+
       </Stack>
     </section>
   );
 };
-// const LeftSide = () => (
-//     <Box>
-//         <Box marginBottom={2}>
-//             <p className={styles.medium}>
-//                 We are club #include, the premier techno learning club where we believe in empowering individuals to explore and master the world of technology.
-//             </p>
-//         </Box>
-//         <br />
-//         <Box marginBottom={4}>
-
-//             <p className={styles.small}>
-//                 At #include, we understand that technology is the driving force of the modern world, and as such, we strive to create a community where individuals can learn, grow, and thrive in this field. Our goal is to equip members with the necessary skills and knowledge to excel in the tech industry and beyond.
-//             </p>
-//         </Box>
-
-//     </Box>
-// );
-
-// const RightSide = () => {
-//     const isMobile = useMediaQuery('(max-width: 991px)');
-
-//     return (
-//         <Box
-//             sx={{
-//                 height: { xs: "auto", md: 1 },
-//                 "& img": {
-//                     objectFit: "cover",
-//                 },
-//                 "& .lazy-load-image-loaded": {
-//                     height: 1,
-//                     width: 1,
-//                 },
-//             }}
-//         >
-//             <Box
-//                 component={LazyLoadImage}
-//                 effect="blur"
-//                 src={isMobile ? "images/Team_image2.png" : "images/Team_image.png"}
-//                 height={{ xs: "auto", md: 1 }}
-//                 // maxHeight={{ xs: 300, md: 1 }}
-//                 width={1}
-//                 maxWidth={1}
-//             />
-//         </Box>
-//     );
-// };
-{
-  /* <Box
-                sx={{
-                    width: 1,
-                    height: 1,
-                    overflow: "hidden",
-                }}
-            >
-                <Container paddingX={0} paddingY={0} maxWidth={{ sm: 1, md: 1236 }}>
-                    <Box
-                        display={"flex"}
-                        flexDirection={{ xs: "column", md: "row" }}
-                        position={"relative"}
-                    >
-                        <Box width={1} order={{ xs: 2, md: 1 }}>
-                            <Container>
-                                <LeftSide />
-                            </Container>
-                        </Box>
-                        <Box
-                            sx={{
-                                flex: { xs: "0 0 100%", md: "0 0 50%" },
-                                position: "relative",
-                                maxWidth: { xs: "100%", md: "50%" },
-                                order: { xs: 1, md: 2 },
-                            }}
-                        >
-                            <Box
-                                sx={{
-                                    width: { xs: 1, md: "50vw" },
-                                    height: "100%",
-                                    position: "relative",
-                                }}
-                            >
-                                <Box
-                                    sx={{
-                                        width: "100%",
-                                        height: "100%",
-                                        overflow: "hidden",
-                                    }}
-                                >
-                                    <Box
-                                        sx={{
-                                            overflow: "hidden",
-                                            left: "0%",
-                                            width: 1,
-                                            height: 1,
-                                            position: { xs: "relative", md: "absolute" },
-                                        }}
-                                    >
-                                        <RightSide />
-                                    </Box>
-                                </Box>
-                            </Box>
-                        </Box>
-                    </Box>
-                </Container>
-                <Divider />
-            </Box> */
-}
 
 export default AboutUs;

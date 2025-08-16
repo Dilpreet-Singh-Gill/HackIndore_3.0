@@ -7,8 +7,6 @@
   backdrop-filter: blur(10px);
 }
 
-.scrolled {}
-
 .nav {
   display: flex;
   align-items: center;
@@ -39,7 +37,7 @@
   box-shadow: unset !important;
 }
 
-.cross>span {
+.cross > span {
   background-image: url("../../public/cross.svg");
 }
 
@@ -103,16 +101,16 @@
 }
 
 .env {
-    background-color: white;
-    border-radius: 5px;
-    padding: 3px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: white;
+  border-radius: 5px;
+  padding: 3px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.env>code {
-    font-size: 1.2rem;
-    color: black;
-    font-weight: 700;
+.env > code {
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 700;
 }

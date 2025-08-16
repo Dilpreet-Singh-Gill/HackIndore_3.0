@@ -228,6 +228,22 @@
     opacity: 0;
   }
 }
+.logoWithText {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between logo and text */
+  justify-content: center; /* center align */
+}
+
+.heroLogo {
+  border-radius: 12px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.heroLogo:hover {
+  transform: scale(1.05); /* slight zoom on hover */
+}
 
 /* .box__ p span {
   font: 700 1em/1 "Poppins", sans-serif;

@@ -1,6 +1,6 @@
 export const registrationFormLink = "";
 export const resgistrationFormOnClick = (event) => {
-  if (registrationFormLink === "") {
+  if (registrationFormLink === "https://unstop.com/o/lrPx7og?lb=a8UehKVd") {
     event.preventDefault();
     alert("The registration process has not yet begun.");
   }
@@ -188,12 +188,7 @@ export const frequentlyAskedQuestions = [
       {
         label: "What is HackIndore?",
         content:
-          "HackIndore is a 24-hour coding event in which software programmers, developers, designers, etc collaborate to build and design innovative and helpful solutions.",
-      },
-      {
-        label: "How much do I have to pay for HackIndore",
-        content:
-          "All you need to invest is your dedication and valuable time. i.e. There are no charges for the event.",
+          "HackIndore is a 8-hour coding event in which software programmers, developers, designers, etc collaborate to build and design innovative and helpful solutions.",
       },
       {
         label: "Do I need to have programming experience?",
@@ -235,7 +230,7 @@ export const frequentlyAskedQuestions = [
       {
         label: "More Questions?",
         content:
-          "Feel free to email us with any questions at hashinclude.sgsits@gmail.com, you can also reach out to us on our social media handles.",
+          "Feel free to email us with any questions at hackindore.gsits@gmail.com, you can also reach out to us on our social media handles.",
       },
     ],
   ],
@@ -247,7 +242,7 @@ export const timelineData = [
     date: "August 17 2025",
   },
   {
-    text: "Problem Statements Release",
+    text: "Theme Release",
     date: "August 25 2025",
   },
   {
@@ -255,7 +250,7 @@ export const timelineData = [
     date: "August 31 2025",
   },
   {
-    text: "PPT Presentation Rounds",
+    text: "Presentation Rounds",
     date: "September 01 2025",
   },
   {

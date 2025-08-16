@@ -34,12 +34,12 @@ const App = ({ Component, pageProps }) => {
                 description="HackIndore 3.0 Registration Website"
                 openGraph={{
                     type: 'website',
-                    url: 'https://www.hackindore.tech',
+                    url: '#',
                     title: 'HackIndore 3.O',
                     description: 'HackIndore 3.0 Registration Website',
                     images: [
                         {
-                            url: 'https://www.hackindore.tech/include.png',
+                            url: '#',
                             alt: 'HackIndore 3.O',
                         },
                     ],

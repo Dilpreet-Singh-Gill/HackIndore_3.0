@@ -42,7 +42,8 @@ const KeyTakeaways = () => {
               front of company officials and get internships.
             </p>
             <p>6. Add value to your resume or CV.</p>
-            <p>7. Free registration and participation.</p>
+            <p>
+              7. Chance to win exciting prizes and goodies </p>
             <p>
               8. Free food, snacks, and beverages will be provided for the
               participants.

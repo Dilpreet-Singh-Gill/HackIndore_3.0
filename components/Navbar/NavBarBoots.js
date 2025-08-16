@@ -53,7 +53,17 @@ function NavBar() {
             <Container>
                 <TransitionElement animationClass='fade' >
                     <Navbar.Brand className={styles.brand} href="/">
-                        <Image src={logoblack} alt="#include" sizes='100vw' height={0} width={0} style={{height: "100%", width:"100%"}} className={styles.logo} priority={true}/>
+                        <Image
+                            src="/assets/Hackindore.png"
+                            alt="hackathon"
+                            sizes="100vw"
+                            height={40}
+                            width={120}
+                            style={{ height: "50px", width: "auto" }}   // ✅ keeps proportions
+                            className={styles.logo}
+                            priority={true}
+                        />
+
                     </Navbar.Brand>
                     {/* <div className={styles.env}>
                         <code>DEV</code>
@@ -101,9 +111,9 @@ function NavBar() {
                 {!isMobile &&
                     <TransitionElement animationClass='fade' >
                         <a
-                            href={registrationFormLink}
+                            href="https://unstop.com/o/lrPx7og?lb=a8UehKVd"
                             onClick={resgistrationFormOnClick}
-                            target='_blank'
+                            target='https://unstop.com/o/lrPx7og?lb=a8UehKVd'
                             className={styles.regisbtn}
                         >
                             Register

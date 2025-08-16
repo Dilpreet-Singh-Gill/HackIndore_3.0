@@ -6,17 +6,22 @@ const useScrollSpy = (sections, offset = 0) => {
     useEffect(() => {
         const handleScroll = () => {
             const currentPosition = window.pageYOffset + offset;
-            const currentSection = sections.find((section) => {
+
+            const current = sections.find((section) => {
                 const sectionElement = document.getElementById(section);
+                if (!sectionElement) return false; // ✅ safeguard
+
                 const sectionTop = sectionElement.offsetTop - offset;
                 const sectionBottom = sectionTop + sectionElement.offsetHeight;
-                return sectionTop <= currentPosition && sectionBottom > currentPosition;
+                return (
+                    sectionTop <= currentPosition && sectionBottom > currentPosition
+                );
             });
 
-            setCurrentSection(currentSection ? currentSection : null);
+            setCurrentSection(current || null);
         };
 
-        handleScroll();
+        handleScroll(); // run once on mount
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, [sections, offset]);

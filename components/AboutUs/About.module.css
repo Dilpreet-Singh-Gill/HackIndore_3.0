@@ -19,6 +19,32 @@
   width: 100% !important;
   border-radius: 18px;
 }
+.iconsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row on desktop */
+  gap: 30px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+.iconBox {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 25px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+@media (max-width: 991px) {
+  .iconsContainer {
+    grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+  }
+}
 
 @media only screen and (max-width: 991px) {
   .text {
@@ -26,5 +52,10 @@
   }
   .image {
     width: 100% !important;
+  }
+}
+@media (max-width: 600px) {
+  .iconsContainer {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 }

@@ -70,8 +70,7 @@ const RegistrationProcess = () => {
               </div>
               <div className={styles.e_infograph__tagline__text}>
                 Select the theme according to your preference and upload the
-                solution to any one of the problem statements in the chosen
-                tracks.
+                solution on the Unstop platform as per the guidelines.
               </div>
             </div>
           </div>
@@ -95,7 +94,7 @@ const RegistrationProcess = () => {
                 The provided solution must consist of the approach to the
                 problem, the techstacks involved in the implementation, and the
                 reason behind the selection of a particular approach and
-                techstacks.
+                techstacks in PPT format.
               </div>
             </div>
           </div>
@@ -119,9 +118,9 @@ const RegistrationProcess = () => {
               </div>
               <div className={styles.e_infograph__tagline__text}>
                 Based on the solutions received, 25 teams will be shortlisted
-                for the final onsite competition to be held 
+                for the final onsite competition to be held
                 {/* on{" "} {month + " " + date + ", " + year}. */}
-                {" "}soon. 
+                {" "}soon.
               </div>
             </div>
           </div>

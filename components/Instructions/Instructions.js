@@ -30,25 +30,28 @@ const Instructions = () => {
         className={styles.instructionContainer}
       >
         <div className={styles.instructions}>
-          <div className={styles.points}>
-            <p>1. Team size should be 3.</p>
-            <p>
-              2. Team leader would be the point of contact. All the team members
-              must mention their LinkedIn and GitHub accounts.
-            </p>
-            <p>
-              3. Evaluation criteria will include the novelty of the solution,
-              complexity, clarity, and details in the prescribed format,
-              feasibility, practicability, sustainability, scale of impact, user
-              experience, and potential for future career progression.
-            </p>
-            <p>
-              4. Teams will receive new problem statements during the hackathon
-              (different from the ones provided during the registration
-              process).
-            </p>
-          </div>
+          <ul className={styles.points}>
+            <li>
+              <span className={styles.number}>1.</span> Team size should be 3.
+            </li>
+            <li>
+              <span className={styles.number}>2.</span> Team leader would be the point
+              of contact. All the team members must mention their LinkedIn and GitHub
+              accounts.
+            </li>
+            <li>
+              <span className={styles.number}>3.</span> Evaluation criteria will include
+              the novelty of the solution, complexity, clarity, feasibility,
+              practicability, sustainability, scale of impact, user experience, and
+              potential for future career progression.
+            </li>
+            <li>
+              <span className={styles.number}>4.</span> Teams are expected to submit
+              their projects before the deadline; late submissions will not be accepted.
+            </li>
+          </ul>
         </div>
+
         <div className={styles.image}>
           <Image
             src={instImage}
@@ -61,7 +64,7 @@ const Instructions = () => {
           />
         </div>
       </Stack>
-    </section>
+    </section >
   );
 };
 

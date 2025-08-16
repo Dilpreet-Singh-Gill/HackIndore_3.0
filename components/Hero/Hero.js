@@ -11,6 +11,7 @@ import styles from "./Hero.module.css";
 import TransitionElement from "../TransitionElement/TransitionElement";
 import ScramblingText from "./ScramblingText/ScramblingText";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
 
@@ -61,7 +62,16 @@ const Hero = () => {
           loaderDelay={loaderDelay}
         >
           <h2 className={styles.fs700}>
-            <div>
+            <div className={styles.logoWithText}>
+              {/* ✅ Logo added here */}
+              <Image
+                src="/assets/Hackindore.png"
+                alt="HackIndore Logo"
+                width={80}
+                height={80}
+                className={styles.heroLogo}
+                priority={true}
+              />
               <AnimatedText>
                 <h1 className={styles.textPrimary}>HACKINDORE 3.0</h1>
               </AnimatedText>
@@ -74,9 +84,7 @@ const Hero = () => {
             <br />
             <div className={styles.timedateSmall}>
               <p id="h">09</p>:<a id="m">00</a>
-              <p id="s">
-                {"AM to "}
-              </p>
+              <p id="s">{"AM to "}</p>
               <p id="h">09</p>:<p id="m">00</p>
               <p id="s">
                 {"PM on " +
@@ -85,16 +93,15 @@ const Hero = () => {
                   })}
               </p>
             </div>
-            {/* Dates to be Announced Soon */}
           </div>
           <p>
-            An 12-Hour Hackathon Experience
+            A 12-Hour Hackathon Experience
             <br />
             Building <strong>Methodical Solutions</strong> to benefit the World
           </p>
 
           <a
-            href={registrationFormLink}
+            href="https://unstop.com/o/lrPx7og?lb=a8UehKVd"
             onClick={resgistrationFormOnClick}
             target="_blank"
             className={styles.email_link}
@@ -102,6 +109,7 @@ const Hero = () => {
             Register For HackIndore
           </a>
         </TransitionElement>
+
         <div className={styles.scrollIndicatorWrapper}>
           <Link
             className={styles.scrollIndicator}

@@ -22,9 +22,9 @@ const Home = () => (
     <Timeline />
     <RegistrationProcess />
     <Instructions />
-    <SponsorsNew />
+    {/* <SponsorsNew /> */}
     <Faq />
-    <PreviousImages />
+    {/* <PreviousImages /> */}
     <AboutUs />
     <ScrollUpBtn />
   </div>

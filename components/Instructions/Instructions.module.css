@@ -1,17 +1,71 @@
 .container {
   margin: 40px 0;
 }
+
+/* Instructions Section */
 .instructions {
-  word-spacing: 2px;
   font-size: 18px;
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  justify-content: center;
-  padding: 15px;
+  line-height: 1.8;
+  padding: 20px;
   width: 50% !important;
+  color: #f5f5f5; /* Light text for contrast on purple bg */
 }
 
+.points li {
+  background: #ffffff;
+  padding: 16px 20px;
+  margin: 16px 0;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  color: #333; /* readable dark text */
+  border-left: none; /* remove old border */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient stripe on left instead of plain border */
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  border-radius: 14px 0 0 14px;
+  background: linear-gradient(180deg, #a855f7, #ec4899);
+  /* purple → pink */
+}
+
+.number {
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(168, 85, 247, 0.4);
+  transition: background 0.3s ease;
+}
+
+.points li:hover .number {
+  background: linear-gradient(135deg, #9333ea, #db2777);
+}
+
+/* Number hover effect */
+.points li:hover .number {
+  background: linear-gradient(135deg, #0056d2, #0099cc);
+}
+
+/* Image Section */
 .image {
   width: 50% !important;
   display: flex;
@@ -19,11 +73,13 @@
   justify-content: center;
   align-items: center;
 }
+
 .img {
   width: 100% !important;
   border-radius: 18px;
 }
 
+/* Responsive Design */
 @media only screen and (max-width: 900px) {
   .instructionContainer {
     display: flex;
@@ -42,10 +98,14 @@
 @media only screen and (max-width: 480px) {
   .instructions {
     padding: 0 15px;
-    /* text-align:start; */
+    font-size: 16px;
+  }
+  .number {
+    font-size: 18px;
   }
 }
 
+/* Remove extra margin from first element */
 .instructions > p:first-of-type {
   margin: 0 !important;
 }
