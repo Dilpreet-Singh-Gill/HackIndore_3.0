@@ -70,28 +70,17 @@ const Hero = () => {
             <ScramblingText data={tying_data_hero_page} />
           </h2>
           <div className={styles.timedate}>
-            <p>{date + ", "}</p> <p>{month}</p> <p id="y">{year + " - "}</p>
-            <p>{endingDate.getDate() + ", "}</p>{" "}
-            <p>
-              {!isMobile
-                ? endingDate.toLocaleString("default", { month: "long" })
-                : endingDate.toLocaleString("default", { month: "short" })}
-            </p>{" "}
-            <p id="y">{year}</p>
+            <p>{date + ", "}</p> <p>{month}</p> <p id="y">{year}</p>
             <br />
             <div className={styles.timedateSmall}>
-              <p id="h">04</p>:<a id="m">00</a>
+              <p id="h">09</p>:<a id="m">00</a>
               <p id="s">
-                {"PM " +
-                  dateOfHackIndore.toLocaleDateString("en", {
-                    weekday: "long",
-                  }) +
-                  " - "}
+                {"AM to "}
               </p>
-              <p id="h">04</p>:<p id="m">00</p>
+              <p id="h">09</p>:<p id="m">00</p>
               <p id="s">
-                {"PM " +
-                  endingDate.toLocaleDateString("en", {
+                {"PM on " +
+                  dateOfHackIndore.toLocaleDateString("en", {
                     weekday: "long",
                   })}
               </p>
@@ -99,7 +88,7 @@ const Hero = () => {
             {/* Dates to be Announced Soon */}
           </div>
           <p>
-            A 24-Hour Hackathon Experience
+            An 12-Hour Hackathon Experience
             <br />
             Building <strong>Methodical Solutions</strong> to benefit the World
           </p>

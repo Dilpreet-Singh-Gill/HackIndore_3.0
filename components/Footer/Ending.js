@@ -64,7 +64,7 @@ const Ending = () => {
             className="font"
           >
             <p className={[styles.ending, styles.ending2].join(" ")}>
-              Made with ❤️ by team{" "} <a href="/" className={styles.none}>#include</a>
+              Made by Students,{" "} <a href="/" className={styles.none}>IT Department, SGSITS</a>
             </p>
           </Box>
         </Box>

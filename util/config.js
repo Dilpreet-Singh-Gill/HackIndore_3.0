@@ -64,15 +64,15 @@ export const sponsorData = [
   },
 ];
 
-export const dateOfHackIndore = new Date(2025, 2, 22, 18, 30, 0);
-export const endingDateOfHackIndore = new Date(2025, 2, 23, 18, 30, 0);
+export const dateOfHackIndore = new Date(2025, 8, 20, 10, 0, 0);
+export const endingDateOfHackIndore = new Date(2025, 8, 20, 18, 0, 0);
 
 export const rightSideBarText = "Tech Club";
 
 export const tying_data_hero_page = ["Think 💡", "Code 🖥️", "Innovate 🚀"];
 
 export const countdownDetails = {
-  timeTillDate: "2025-03-22 12:30",
+  timeTillDate: "2025-09-20 10:00",
   timeFormat: "YYYY-MM-DD HH:mm",
 };
 
@@ -243,34 +243,38 @@ export const frequentlyAskedQuestions = [
 
 export const timelineData = [
   {
+    text: "Registration Starts",
+    date: "August 17 2025",
+  },
+  {
     text: "Problem Statements Release",
-    date: "Feburary 1 2024",
+    date: "August 25 2025",
   },
   {
-    text: "Idea Proposal Submission",
-    date: "Feburary 5 2024",
+    text: "Registration Ends",
+    date: "August 31 2025",
   },
   {
-    text: "Announcement of Selected Teams",
-    date: "Feburary 10 2025",
+    text: "PPT Presentation Rounds",
+    date: "September 01 2025",
   },
   {
-    text: "Hackathon Starts",
-    date: "Feburary 15 2025",
+    text: "Final Hackathon, SGSITS",
+    date: "September 20 2025",
   },
   {
     text: "Hackathon Ends",
-    date: "Feburary 16 2025",
+    date: "September 20 2025",
   },
   {
     text: "Announcement of Winners",
-    date: "Feburary 16 2025",
+    date: "September 20 2025",
   },
 ];
 
 export const contactDetails = {
-  numbers: ["+91 7024049707", "+91 8109974160"],
-  email: "hashinclude.sgsits@gmail.com",
+  numbers: ["+91 8435358999"],
+  email: "hackindore.gsits@gmail.com",
   address:
     "Shri Govindram Seksaria Institute of Technology and Science, 23, Sir M. Visvesvaraya Marg, Vallabh Nagar, Indore, Madhya Pradesh 452003, India",
 };
