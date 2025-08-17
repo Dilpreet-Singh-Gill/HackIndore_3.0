@@ -18,9 +18,9 @@ const hashRoutes = [
     ['Timeline', '/#timeline'],
     ['Process', '/#registrationprocess'],
     ['Note', '/#instructions'],
-    ['Sponsors', '/#sponsors'],
+    // ['Sponsors', '/#sponsors'],
     ["FAQs", "/#faq"],
-    ['Glimpses', '/#glimpses'],
+    // ['Glimpses', '/#glimpses'],
     ['About', '/#aboutus'],
     ['Contact', '/#contact'],
 
@@ -95,7 +95,7 @@ function NavBar() {
                             <>
                                 <div className='d-flex justify-content-center mt-3' style={{ marginBottom: '4rem' }}>
                                     <a
-                                        href={registrationFormLink}
+                                        href="https://unstop.com/o/lrPx7og?lb=a8UehKVd"
                                         onClick={resgistrationFormOnClick}
                                         target='_blank'
                                         className={styles.regisbtn}

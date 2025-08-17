@@ -94,7 +94,7 @@ export const socialMedia = [
   },
   {
     name: "Email",
-    url: "mailto:hashinclude.sgsits@gmail.com",
+    url: "mailto: hackindore.gsits@gmail.com",
   },
 ];
 
