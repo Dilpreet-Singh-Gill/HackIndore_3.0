@@ -8,7 +8,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 // const poster = "hackindore3-poster.jpg"
-const poster = "/coming_soon_poster_compressed.png";
+const poster = "/assets/Flyer.png";
 
 const KeyTakeaways = () => {
   const revealContainer = useScrollReveal();

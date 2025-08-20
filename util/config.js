@@ -64,7 +64,7 @@ export const sponsorData = [
   },
 ];
 
-export const dateOfHackIndore = new Date(2025, 8, 20, 10, 0, 0);
+export const dateOfHackIndore = new Date(2025, 8, 13, 10, 0, 0);
 export const endingDateOfHackIndore = new Date(2025, 8, 20, 18, 0, 0);
 
 export const rightSideBarText = "Tech Club";
@@ -72,7 +72,7 @@ export const rightSideBarText = "Tech Club";
 export const tying_data_hero_page = ["Think 💡", "Code 🖥️", "Innovate 🚀"];
 
 export const countdownDetails = {
-  timeTillDate: "2025-09-20 10:00",
+  timeTillDate: "2025-09-13 09:00",
   timeFormat: "YYYY-MM-DD HH:mm",
 };
 

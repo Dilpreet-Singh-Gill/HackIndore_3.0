@@ -32,7 +32,7 @@ const Instructions = () => {
         <div className={styles.instructions}>
           <ul className={styles.points}>
             <li>
-              <span className={styles.number}>1.</span> Team size should be 3.
+              <span className={styles.number}>1.</span> Team size should be 2-4.
             </li>
             <li>
               <span className={styles.number}>2.</span> Team leader would be the point

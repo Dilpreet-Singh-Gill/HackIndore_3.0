@@ -46,7 +46,7 @@ const RegistrationProcess = () => {
                 Create Team
               </div>
               <div className={styles.e_infograph__tagline__text}>
-                Create a team of upto 3 people.
+                Create a team of upto 2-4 people.
               </div>
             </div>
           </div>
@@ -117,7 +117,7 @@ const RegistrationProcess = () => {
                 Await for Outcome
               </div>
               <div className={styles.e_infograph__tagline__text}>
-                Based on the solutions received, 25 teams will be shortlisted
+                Based on the solutions received, 30 teams will be shortlisted
                 for the final onsite competition to be held
                 {/* on{" "} {month + " " + date + ", " + year}. */}
                 {" "}soon.

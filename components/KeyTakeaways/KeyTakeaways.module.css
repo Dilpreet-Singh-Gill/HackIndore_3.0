@@ -3,27 +3,34 @@
 }
 
 .keyPoints {
-  word-spacing: 2px;
-  font-size: 18px;
+  word-spacing: 1px;
+  font-size: 17px; /* slightly smaller but denser */
+  line-height: 1.5; /* tighter line spacing */
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
-  padding: 15px;
-  width: 50% !important;
+  padding: 10px 20px;
+  width: 55% !important; /* text takes more space */
+}
+
+.keyPoints p {
+  margin-bottom: 8px; /* reduce extra blank space */
+  text-align: justify; /* cleaner block look */
 }
 
 .image {
-  width: 50% !important;
+  width: 45% !important; /* image takes less space */
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .img {
   width: 100% !important;
-  border-radius: 18px;
+  max-width: 380px; /* prevent poster from being too big */
+  border-radius: 14px;
+  object-fit: contain;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 @media only screen and (max-width: 900px) {
@@ -32,24 +39,32 @@
     align-items: center;
     flex-direction: column-reverse;
     width: 100% !important;
+    gap: 20px;
   }
 
   .keyPoints {
     width: 100% !important;
+    font-size: 16px;
+    line-height: 1.4;
   }
 
   .image {
     width: 100% !important;
   }
+
+  .img {
+    max-width: 300px; /* smaller poster on mobile */
+  }
 }
 
 @media only screen and (max-width: 480px) {
   .keyPoints {
-    padding: 0 15px;
-    /* text-align:start; */
+    padding: 0 12px;
+    font-size: 15px;
+    line-height: 1.4;
   }
 }
 
 .keyPoints > p:first-of-type {
-  margin: 0 !important;
+  margin-top: 0 !important;
 }
