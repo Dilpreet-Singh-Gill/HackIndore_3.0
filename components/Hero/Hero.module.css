@@ -77,6 +77,45 @@
     width: 200px;
   }
 }
+.logoWithText {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between logo and text */
+  justify-content: center; /* center align */
+}
+
+.heroLogo {
+  border-radius: 12px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.heroLogo:hover {
+  transform: scale(1.05); /* slight zoom on hover */
+}
+
+/* ------------------ NEW PARTNER STYLES ------------------ */
+.partnerSection {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.partnerLabel {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.partnerLogo {
+  object-fit: contain;
+  max-width: 180px;
+  height: auto;
+}
 
 .email_link {
   /* --color: #64ffda; */

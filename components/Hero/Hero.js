@@ -63,7 +63,7 @@ const Hero = () => {
         >
           <h2 className={styles.fs700}>
             <div className={styles.logoWithText}>
-              {/* ✅ Logo added here */}
+              {/* HackIndore Logo */}
               <Image
                 src="/assets/Hackindore.png"
                 alt="HackIndore Logo"
@@ -76,6 +76,19 @@ const Hero = () => {
                 <h1 className={styles.textPrimary}>HACKINDORE 3.0</h1>
               </AnimatedText>
             </div>
+
+            {/* ✅ Partner Section */}
+            <div className={styles.partnerSection}>
+              <p className={styles.partnerLabel}>Coding Partner</p>
+              <Image
+                src="/assets/Encode AI.jpg" // place Encode AI logo in public/assets
+                alt="Encode AI Logo"
+                width={140}
+                height={60}
+                className={styles.partnerLogo}
+              />
+            </div>
+
             <div>Where Creativity Meets Technology</div>
             <ScramblingText data={tying_data_hero_page} />
           </h2>
