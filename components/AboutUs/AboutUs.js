@@ -20,25 +20,32 @@ const AboutUs = () => {
           data-win-title="#Include_Club"
         >
           <p className={styles.lede}>
-            The <strong>#include Club</strong> of the IT Department of SGSITS
-            is organizing a hackathon to empower individuals to explore,
-            innovate, and master the world of technology.
+            We are club <strong>#include</strong>, the official techno learning
+            club of Information Technology Department, SGSITS. We believe in
+            empowering individuals to explore and master the world of
+            technology.
           </p>
           <p className={styles.body}>
-            We believe that technology is the driving force of the modern world,
-            and through this event, we aim to create a vibrant community where
-            participants can learn, collaborate, and showcase their creativity.
+            At <strong>#include</strong>, we understand that technology is the
+            driving force of the modern world, and as such, we strive to create
+            a community where individuals can learn, grow, and thrive in this
+            field. Our goal is to equip members with the necessary skills and
+            knowledge to excel in the tech industry and beyond.
           </p>
-          <p className={styles.body}>
-            Our goal is to equip students with the skills, experience, and
-            confidence needed to excel in the tech industry and beyond, while
-            fostering innovation, problem-solving, and teamwork.
-          </p>
-          <ul className={styles.pillars}>
-            {pillars.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
+          <div className={styles.footerRow}>
+            <Image
+              src="/include.png"
+              alt="#include Club"
+              width={1576}
+              height={1591}
+              className={styles.clubMark}
+            />
+            <ul className={styles.pillars}>
+              {pillars.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <div

@@ -24,19 +24,13 @@ const Map = () => {
       }}
     >
       <Box position={"relative"} zIndex={2}>
-        <Box
-          display={"flex"}
-          justifyContent={"space-between"}
-          alignItems={{ sm: "center", xs: "flex-start" }}
-          width={1}
-          flexDirection={{ xs: "column-reverse", sm: "row" }}
-        >
+        <Box className={styles.contactStack}>
           <Grid
             container
             flexDirection={"column"}
             margin={{ xs: 0 }}
             spacing={2}
-            width={200}
+            className={styles.contactCopy}
             sx={{ width: "100%" }}
           >
             <Box>
@@ -61,14 +55,9 @@ const Map = () => {
               </p>
             </Grid>
           </Grid>
-          <Box
-            marginY={2}
-            justifyContent={"center"}
-            height={"100%"}
-            width={"100%"}
-            margin={{ xs: 0, sm: 5 }}
-          >
+          <Box className={styles.contactMap}>
             <iframe
+              className={styles.mapFrame}
               width="100%"
               height="100%"
               frameBorder="0"
@@ -77,10 +66,6 @@ const Map = () => {
               marginWidth={0}
               scrolling="no"
               src={mapEmbedLink}
-              style={{
-                minHeight: 350,
-                borderRadius: 8,
-              }}
             />
           </Box>
         </Box>

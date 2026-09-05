@@ -18,14 +18,14 @@ const hashRoutes = [
     ['Timeline', '/#timeline'],
     ['Process', '/#registrationprocess'],
     ['Note', '/#instructions'],
-    // ['Sponsors', '/#sponsors'],
-    ["FAQs", "/#faq"],
-    // ['Glimpses', '/#glimpses'],
+    ['Sponsors', '/#sponsors'],
+    ['Glimpses', '/#glimpses'],
     ['About', '/#aboutus'],
+    ["FAQs", "/#faq"],
     ['Contact', '/#contact'],
 
 ];
-const sections = ['hero', 'countdown', /*'keytakeaways',*/ 'timeline', 'registrationprocess', 'instructions', 'sponsors', 'faq', 'glimpses', 'aboutus', 'contact'];
+const sections = ['hero', 'countdown', /*'keytakeaways',*/ 'timeline', 'registrationprocess', 'instructions', 'sponsors', 'glimpses', 'aboutus', 'faq', 'contact'];
 const logoblack = "/include_com_black.png";
 function NavBar() {
 

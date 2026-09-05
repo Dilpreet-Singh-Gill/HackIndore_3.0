@@ -189,7 +189,7 @@ export const frequentlyAskedQuestions = [
       {
         label: "What is HackIndore?",
         content:
-          "HackIndore is a 8-hour coding event in which software programmers, developers, designers, etc collaborate to build and design innovative and helpful solutions.",
+          "HackIndore is a 24-hour coding event in which software programmers, developers, designers, etc collaborate to build and design innovative and helpful solutions.",
       },
       {
         label: "Do I need to have programming experience?",

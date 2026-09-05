@@ -63,8 +63,16 @@ const Ending = () => {
             alignItems={"center"}
             className="font"
           >
-            <p className={[styles.ending, styles.ending2].join(" ")}>
-              Made by Students,{" "} <a href="/" className={styles.none}>#include Club, IT Department, SGSITS</a>
+            <p className={[styles.ending, styles.ending2, styles.credit].join(" ")}>
+              <img
+                src="/include.png"
+                alt="#include Club"
+                className={styles.clubMark}
+              />
+              Made by Students,{" "}
+              <a href="/#aboutus" className={styles.none}>
+                #include Club, IT Department, SGSITS
+              </a>
             </p>
           </Box>
         </Box>

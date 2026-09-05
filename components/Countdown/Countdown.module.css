@@ -125,11 +125,15 @@
 /* Below this width the single row gets cramped, so switch to a 2x2 grid
    and drop the dividers rather than letting them wrap awkwardly. */
 @media only screen and (max-width: 700px) {
+  .timerStage {
+    padding: 1.2rem 0 0.6rem;
+  }
+
   .countdownWrapper {
     display: grid;
     grid-template-columns: repeat(2, auto);
     justify-content: center;
-    gap: 1.6rem 2.4rem;
+    gap: 1.2rem 1.8rem;
   }
 
   .divider {

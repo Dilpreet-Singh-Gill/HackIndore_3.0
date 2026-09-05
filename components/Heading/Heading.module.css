@@ -19,6 +19,17 @@
   color: var(--hi-blue-200);
 }
 
+@media only screen and (max-width: 520px) {
+  .eyebrow {
+    font-size: 0.52rem;
+    letter-spacing: 0.16em;
+  }
+
+  .headingWrapper_div {
+    gap: 0.6rem;
+  }
+}
+
 .headingWrapper_div h1 {
   font-weight: 700;
   text-align: center;

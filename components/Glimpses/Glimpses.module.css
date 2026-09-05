@@ -1,0 +1,369 @@
+.section {
+  position: relative;
+  margin: 24px 0;
+}
+
+.stage {
+  margin-top: 1.1rem;
+  padding: 30px 12px 12px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(200px, 0.8fr);
+  gap: 0.7rem;
+  height: min(46vh, 360px);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid var(--hi-line-soft);
+  background-color: var(--hi-deep);
+  cursor: pointer;
+  min-height: 0;
+  height: 100%;
+}
+
+.hero:focus-visible {
+  outline: none;
+  border-color: var(--hi-line);
+  box-shadow: 0 0 32px var(--hi-glow);
+}
+
+.heroPhoto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  scale: 1.08;
+  filter: saturate(1.08) contrast(1.05);
+  transition: opacity 0.7s var(--easing), scale 6s linear;
+}
+
+.heroPhoto[data-on="true"] {
+  opacity: 1;
+  scale: 1.18;
+}
+
+.heroWash {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(1, 3, 14, 0.72), transparent 46%),
+    radial-gradient(circle at 20% 10%, rgba(26, 84, 255, 0.18), transparent 50%);
+}
+
+.heroMeta {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1.15rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.8rem;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hi-white);
+  text-shadow: 0 0 12px var(--hi-glow);
+}
+
+.progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.progressBar {
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--hi-blue-400), var(--hi-white));
+  box-shadow: 0 0 12px var(--hi-glow);
+  animation: loadBar 4.2s linear;
+}
+
+.progressBar[data-paused="true"] {
+  animation-play-state: paused;
+}
+
+.lanes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  min-height: 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 10%, #000 90%, transparent);
+}
+
+.lane {
+  overflow: hidden;
+  height: 100%;
+}
+
+.laneTrack {
+  display: flex;
+  flex-direction: column;
+  animation: rise 34s linear infinite;
+}
+
+.lane[data-dir="down"] .laneTrack {
+  animation-name: fall;
+  animation-duration: 40s;
+}
+
+.lanes:hover .laneTrack {
+  animation-play-state: paused;
+}
+
+.laneGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.stripCard {
+  padding: 0;
+  border: 2px solid var(--hi-line-soft);
+  background-color: var(--hi-deep);
+  overflow: hidden;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.stripCard[data-tilt="a"] {
+  rotate: -2.4deg;
+}
+
+.stripCard[data-tilt="b"] {
+  rotate: 2.2deg;
+}
+
+.stripCard:hover,
+.stripCard:focus-visible {
+  outline: none;
+  rotate: 0deg;
+  border-color: var(--hi-line);
+  box-shadow: 0 0 22px var(--hi-glow);
+  z-index: 1;
+}
+
+.stripPhoto {
+  display: block;
+  width: 100%;
+  height: 7.2rem;
+  object-fit: cover;
+  transition: scale 0.5s var(--easing);
+}
+
+.stripCard:hover .stripPhoto,
+.stripCard:focus-visible .stripPhoto {
+  scale: 1.08;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 2px solid var(--hi-line-soft);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.dot[data-on="true"] {
+  background-color: var(--hi-white);
+  border-color: var(--hi-white);
+  box-shadow: 0 0 12px var(--hi-glow);
+  scale: 1.15;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem;
+  background: rgba(1, 3, 14, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.lightboxFrame {
+  position: relative;
+  width: min(920px, 100%);
+  padding: 38px 14px 14px;
+}
+
+.lightboxPhoto {
+  display: block;
+  width: 100%;
+  max-height: min(72vh, 720px);
+  object-fit: contain;
+  background-color: #01030e;
+}
+
+.lightboxBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 0.85rem;
+}
+
+.counter {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--hi-blue-200);
+}
+
+.navBtn,
+.closeBtn {
+  border: 2px solid var(--hi-line-soft);
+  background-color: rgba(26, 84, 255, 0.16);
+  color: var(--hi-white);
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.navBtn:hover,
+.closeBtn:hover,
+.navBtn:focus-visible,
+.closeBtn:focus-visible {
+  outline: none;
+  border-color: var(--hi-line);
+  background-color: var(--hi-blue);
+  box-shadow: 0 0 18px var(--hi-glow);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 28px;
+  right: 12px;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(-50%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadBar {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .hero {
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: 34vh;
+  }
+
+  .lanes {
+    height: 9rem;
+  }
+
+  .stripPhoto {
+    height: 6.4rem;
+  }
+
+  .stripCard[data-tilt="a"],
+  .stripCard[data-tilt="b"] {
+    rotate: 0deg;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .section {
+    margin: 20px 0;
+  }
+
+  .stage {
+    padding: 28px 8px 10px;
+  }
+
+  .hero {
+    max-height: 30vh;
+  }
+
+  .lanes {
+    grid-template-columns: 1fr;
+    height: 8.2rem;
+  }
+
+  .heroMeta {
+    font-size: 0.52rem;
+  }
+
+  .lightbox {
+    padding: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroPhoto,
+  .laneTrack,
+  .progressBar,
+  .stripPhoto {
+    animation: none;
+    transition: none;
+  }
+
+  .heroPhoto {
+    scale: 1;
+  }
+
+  .stripCard[data-tilt="a"],
+  .stripCard[data-tilt="b"] {
+    rotate: 0deg;
+  }
+}

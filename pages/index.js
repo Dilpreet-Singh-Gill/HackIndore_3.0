@@ -10,8 +10,9 @@ import AboutUs from "@/components/AboutUs/AboutUs";
 import KeyTakeaways from "@/components/KeyTakeaways/KeyTakeaways";
 import RegistrationProcess from "@/components/RegistrationProcess/RegistrationProcess";
 import Instructions from "@/components/Instructions/Instructions";
+import PastSponsors from "@/components/PastSponsors/PastSponsors";
+import Glimpses from "@/components/Glimpses/Glimpses";
 import ScrollUpBtn from "@/components/ScrollUpBtn/ScrollUpBtn";
-import SponsorsNew from "@/components/Sponsor/SponsorNew";
 import Marquee from "@/components/Marquee/Marquee";
 
 
@@ -24,10 +25,10 @@ const Home = () => (
     <Timeline />
     <RegistrationProcess />
     <Instructions />
-    {/* <SponsorsNew /> */}
-    <Faq />
-    {/* <PreviousImages /> */}
+    <PastSponsors />
+    <Glimpses />
     <AboutUs />
+    <Faq />
     <ScrollUpBtn />
   </div>
 );
