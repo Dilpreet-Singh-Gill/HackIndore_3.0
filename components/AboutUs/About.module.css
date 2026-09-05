@@ -11,9 +11,30 @@
   margin-top: 2rem;
 }
 
-.copyFrame,
-.stackFrame {
+.copyFrame {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.stackFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  width: 100%;
+  height: auto;
+}
+
+.teamPhoto {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100%;
+  aspect-ratio: 853 / 632;
+  object-fit: contain;
+  border: 2px solid var(--hi-line-soft);
 }
 
 .lede {
@@ -21,6 +42,11 @@
   font-size: 1.08rem;
   line-height: 1.7;
   color: var(--hi-white);
+}
+
+.lede strong {
+  color: var(--hi-white);
+  font-weight: 700;
 }
 
 .body {
@@ -54,60 +80,13 @@
   background-color: rgba(26, 84, 255, 0.18);
 }
 
-.icons {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
-  margin: 0;
-  padding: 0;
-}
-
-.iconTile {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.45rem;
-  min-height: 6.2rem;
-  padding: 0.85rem 0.4rem;
-  border: 2px solid var(--hi-line-soft);
-  background-color: var(--hi-panel);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  transition: var(--transition);
-}
-
-.iconTile:hover,
-.iconTile:focus-within {
-  border-color: var(--hi-line);
-  background-color: rgba(26, 84, 255, 0.24);
-  box-shadow: 0 0 22px var(--hi-glow);
-  translate: 0 -3px;
-}
-
-.iconGlyph {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 0 10px var(--hi-glow));
-}
-
-.iconLabel {
-  font-family: var(--font-display);
-  font-size: 0.55rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--hi-blue-200);
-}
-
 @media only screen and (max-width: 900px) {
   .layout {
     grid-template-columns: 1fr;
   }
 
-  .icons {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .copyFrame {
+    height: auto;
   }
 }
 
@@ -118,16 +97,5 @@
 
   .body {
     font-size: 0.92rem;
-  }
-
-  .icons {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .iconTile:hover,
-  .iconTile:focus-within {
-    translate: 0 0;
   }
 }

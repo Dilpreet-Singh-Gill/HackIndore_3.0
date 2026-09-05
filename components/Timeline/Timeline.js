@@ -7,79 +7,84 @@ import Heading from "../Heading/Heading";
 const pad = (value) => String(value + 1).padStart(2, "0");
 
 const Timeline = () => {
-  const revealContainer = useScrollReveal();
-  const pinRef = useRef(null);
-  const viewportRef = useRef(null);
+  const headingRef = useScrollReveal();
   const trackRef = useRef(null);
+  const railRef = useRef(null);
+  const fillRef = useRef(null);
   const itemsRef = useRef([]);
-  const progressRef = useRef(null);
 
   useEffect(() => {
-    const pin = pinRef.current;
-    const viewport = viewportRef.current;
+    const items = itemsRef.current.filter(Boolean);
     const track = trackRef.current;
-    if (!pin || !viewport || !track) return;
+    const rail = railRef.current;
+    const fill = fillRef.current;
+    if (!items.length || !track || !rail || !fill) return;
 
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
-    if (reducedMotion) return;
 
-    let overflow = 0;
-    let frame = 0;
-    const total = timelineData.length;
-
-    const measure = () => {
-      overflow = Math.max(0, track.scrollWidth - viewport.clientWidth);
-      pin.style.setProperty("--timeline-overflow", `${overflow}px`);
-    };
-
-    const update = () => {
-      frame = 0;
-      const pinTop = pin.getBoundingClientRect().top;
-      const scrollable = pin.offsetHeight - window.innerHeight;
-      const progress =
-        scrollable <= 0
-          ? 0
-          : Math.min(1, Math.max(0, -pinTop / scrollable));
-      track.style.transform = `translate3d(${-overflow * progress}px, 0, 0)`;
-
-      const active = Math.min(
-        total - 1,
-        Math.round(progress * (total - 1))
+    let revealObserver;
+    if (!reducedMotion && typeof IntersectionObserver !== "undefined") {
+      revealObserver = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting) continue;
+            entry.target.setAttribute("data-in", "true");
+            revealObserver.unobserve(entry.target);
+          }
+        },
+        { threshold: 0.22, rootMargin: "0px 0px -10% 0px" }
       );
-      itemsRef.current.forEach((el, i) => {
-        if (!el) return;
-        el.setAttribute("data-active", i === active ? "true" : "false");
+      items.forEach((el) => revealObserver.observe(el));
+    } else {
+      items.forEach((el) => el.setAttribute("data-in", "true"));
+    }
+
+    let frame = 0;
+    const syncActive = () => {
+      frame = 0;
+      const focus = window.innerHeight * 0.42;
+      let best = 0;
+      let bestDist = Infinity;
+
+      items.forEach((el, i) => {
+        const box = el.getBoundingClientRect();
+        const dist = Math.abs(box.top + box.height / 2 - focus);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = i;
+        }
       });
-      if (progressRef.current) {
-        progressRef.current.textContent = `${pad(active)} / ${pad(total - 1)}`;
-      }
+
+      items.forEach((el, i) => {
+        el.setAttribute("data-active", i === best ? "true" : "false");
+      });
+
+      const railBox = rail.getBoundingClientRect();
+      const node = items[best].querySelector("[data-node]");
+      if (!node || railBox.height <= 0) return;
+      const nodeBox = node.getBoundingClientRect();
+      const progress = Math.min(
+        1,
+        Math.max(0.08, (nodeBox.top + nodeBox.height / 2 - railBox.top) / railBox.height)
+      );
+      fill.style.transform = `scaleY(${progress})`;
     };
 
     const onScroll = () => {
       if (frame) return;
-      frame = window.requestAnimationFrame(update);
+      frame = window.requestAnimationFrame(syncActive);
     };
 
-    const onResize = () => {
-      measure();
-      update();
-    };
-
-    measure();
-    update();
+    syncActive();
     window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
-
-    const observer = new ResizeObserver(onResize);
-    observer.observe(track);
-    observer.observe(viewport);
+    window.addEventListener("resize", onScroll);
 
     return () => {
+      revealObserver?.disconnect();
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onResize);
-      observer.disconnect();
+      window.removeEventListener("resize", onScroll);
       if (frame) window.cancelAnimationFrame(frame);
     };
   }, []);
@@ -87,54 +92,45 @@ const Timeline = () => {
   if (!timelineData.length) return null;
 
   return (
-    <section
-      id="timeline"
-      ref={(node) => {
-        pinRef.current = node;
-        revealContainer.current = node;
-      }}
-      className={styles.pin}
-    >
-      <div className={styles.sticky}>
-        <div className={styles.headingRow}>
-          <div className="headings_glittered">
-            <Heading eyebrow="The roadmap">Timeline</Heading>
-          </div>
-          <p className={styles.progress} ref={progressRef} aria-live="off">
-            01 / {pad(timelineData.length - 1)}
-          </p>
-        </div>
-
-        <div className={styles.viewport} ref={viewportRef}>
-          <ol className={styles.track} ref={trackRef}>
-            <span className={styles.rail} aria-hidden="true" />
-            {timelineData.map((data, idx) => (
-              <li
-                key={`${data.text}-${idx}`}
-                className={styles.item}
-                data-side={idx % 2 === 0 ? "below" : "above"}
-                data-active={idx === 0 ? "true" : "false"}
-                ref={(node) => {
-                  itemsRef.current[idx] = node;
-                }}
-              >
-                <span className={styles.node} aria-hidden="true" />
-                <article
-                  className={`winFrame ${styles.card}`}
-                  data-win-title={`STEP_${pad(idx)}`}
-                >
-                  <h3 className={styles.title}>{data.text}</h3>
-                  {data.date && (
-                    <time className={styles.date} dateTime={data.date}>
-                      {data.date}
-                    </time>
-                  )}
-                </article>
-              </li>
-            ))}
-          </ol>
-        </div>
+    <section id="timeline" className={styles.section}>
+      <div ref={headingRef} className="headings_glittered">
+        <Heading eyebrow="The roadmap">Timeline</Heading>
       </div>
+
+      <ol className={styles.track} ref={trackRef}>
+        <span className={styles.rail} ref={railRef} aria-hidden="true">
+          <span className={styles.railFill} ref={fillRef} />
+        </span>
+        {timelineData.map((data, idx) => (
+          <li
+            key={`${data.text}-${idx}`}
+            className={styles.item}
+            data-in="false"
+            data-side={idx % 2 === 0 ? "left" : "right"}
+            data-active={idx === 0 ? "true" : "false"}
+            style={{ "--delay": `${idx * 70}ms` }}
+            ref={(node) => {
+              itemsRef.current[idx] = node;
+            }}
+          >
+            <span className={styles.node} data-node aria-hidden="true" />
+            <article
+              className={`winFrame ${styles.card}`}
+              data-win-title={`STEP_${pad(idx)}`}
+            >
+              <span className={styles.step} aria-hidden="true">
+                {pad(idx)}
+              </span>
+              <h3 className={styles.title}>{data.text}</h3>
+              {data.date && (
+                <time className={styles.date} dateTime={data.date}>
+                  {data.date}
+                </time>
+              )}
+            </article>
+          </li>
+        ))}
+      </ol>
     </section>
   );
 };

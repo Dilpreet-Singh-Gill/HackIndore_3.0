@@ -14,8 +14,8 @@ const takeaways = [
   },
   {
     n: "02",
-    title: "T-shirts & goodies",
-    body: "Walk away with T-shirts and goodies from the event.",
+    title: "Stickers & goodies",
+    body: "Walk away with stickers and goodies from the event.",
   },
   {
     n: "03",

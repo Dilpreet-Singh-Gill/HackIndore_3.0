@@ -4,8 +4,8 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head>
-                <link rel="icon" href="/assets/hackindore.png" />
-                <link rel="shortcut icon" href="/assets/hackindore.png"></link>
+                <link rel="icon" type="image/png" href="/assets/white.png" />
+                <link rel="shortcut icon" type="image/png" href="/assets/white.png" />
 
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

@@ -1,23 +1,7 @@
 import Heading from "../Heading/Heading";
+import Image from "next/image";
 import styles from "./About.module.css";
 import useScrollReveal from "@/hooks/useScrollReveal";
-import {
-  SiReact,
-  SiNodedotjs,
-  SiPython,
-  SiMongodb,
-  SiJavascript,
-  SiGit,
-} from "react-icons/si";
-
-const techIcons = [
-  { Icon: SiReact, label: "React", color: "#61DAFB" },
-  { Icon: SiNodedotjs, label: "Node", color: "#68A063" },
-  { Icon: SiPython, label: "Python", color: "#FFD43B" },
-  { Icon: SiMongodb, label: "Mongo", color: "#47A248" },
-  { Icon: SiJavascript, label: "JS", color: "#F7DF1E" },
-  { Icon: SiGit, label: "Git", color: "#F05032" },
-];
 
 const pillars = ["Learn", "Collaborate", "Showcase"];
 
@@ -27,18 +11,18 @@ const AboutUs = () => {
   return (
     <section id="aboutus" ref={revealContainer} className={styles.container}>
       <div className="headings_glittered">
-        <Heading eyebrow="Who we are">About Us</Heading>
+        <Heading eyebrow="Who we are">About us</Heading>
       </div>
 
       <div className={styles.layout}>
         <div
           className={`winFrame ${styles.copyFrame}`}
-          data-win-title="IT_Department"
+          data-win-title="#Include_Club"
         >
           <p className={styles.lede}>
-            The Information Technology Department of SGSITS is organizing a
-            hackathon to empower individuals to explore, innovate, and master
-            the world of technology.
+            The <strong>#include Club</strong> of the IT Department of SGSITS
+            is organizing a hackathon to empower individuals to explore,
+            innovate, and master the world of technology.
           </p>
           <p className={styles.body}>
             We believe that technology is the driving force of the modern world,
@@ -59,18 +43,16 @@ const AboutUs = () => {
 
         <div
           className={`winFrame ${styles.stackFrame}`}
-          data-win-title="Tech_Stack"
+          data-win-title="The_Team"
         >
-          <ul className={styles.icons}>
-            {techIcons.map(({ Icon, label, color }) => (
-              <li key={label} className={styles.iconTile}>
-                <span className={styles.iconGlyph} style={{ color }}>
-                  <Icon size={28} color={color} aria-hidden="true" />
-                </span>
-                <span className={styles.iconLabel}>{label}</span>
-              </li>
-            ))}
-          </ul>
+          <Image
+            src="/images/Team_image2.png"
+            alt="HackIndore team"
+            className={styles.teamPhoto}
+            width={853}
+            height={632}
+            style={{ width: "100%", height: "auto" }}
+          />
         </div>
       </div>
     </section>

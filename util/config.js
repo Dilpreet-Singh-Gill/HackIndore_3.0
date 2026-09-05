@@ -252,7 +252,7 @@ export const timelineData = [
   },
   {
     text: "Registration Ends",
-    date: "August 18 2026",
+    date: "September 18 2026",
   },
   {
     text: "Presentation Round",
@@ -273,7 +273,7 @@ export const timelineData = [
 ];
 
 export const contactDetails = {
-  numbers: ["+91 9238205180"],
+  numbers: ["+91 9238205180","+91 70679 62910"],
   email: "hackindore.gsits@gmail.com",
   address:
     "Shri Govindram Seksaria Institute of Technology and Science, 23, Sir M. Visvesvaraya Marg, Vallabh Nagar, Indore, Madhya Pradesh 452003, India",
