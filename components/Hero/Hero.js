@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AnimatedText from "@/components/AnimatedText/AnimatedText";
 import {
   registrationFormLink,
   resgistrationFormOnClick,
@@ -12,23 +11,40 @@ import TransitionElement from "../TransitionElement/TransitionElement";
 import ScramblingText from "./ScramblingText/ScramblingText";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
 
 const loaderDelay = 800;
 const mountDelay = 500;
 
+const resumeHighlights = [
+  "Real-World Challenges",
+  "Hands-On Experience",
+  "Projects Worth Showcasing",
+];
+
+const stats = [
+  { value: "24", label: "Hours" },
+  { value: "4.0", label: "Edition" },
+  { value: "SGSITS", label: "Indore" },
+];
+
 const Hero = () => {
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState("true");
   const [scrollIndicatorIsMount, setScrollIndicatorIsMount] = useState(false);
   const isMobile = useMediaQuery("(max-width: 460px)");
-  const date = dateOfHackIndore.getDate();
+  const startDate = dateOfHackIndore.getDate();
+  const endDate = endingDateOfHackIndore.getDate();
   const year = dateOfHackIndore.getFullYear();
   const month = !isMobile
     ? dateOfHackIndore.toLocaleString("default", { month: "long" })
     : dateOfHackIndore.toLocaleString("default", { month: "short" });
+  const startWeekday = dateOfHackIndore.toLocaleDateString("en", {
+    weekday: "long",
+  });
+  const endWeekday = endingDateOfHackIndore.toLocaleDateString("en", {
+    weekday: "long",
+  });
 
-  const endingDate = endingDateOfHackIndore;
   useEffect(() => {
     const hiddenId = setTimeout(
       () => setScrollIndicatorHidden("false"),
@@ -55,73 +71,109 @@ const Hero = () => {
 
   return (
     <section className={styles.container} id="hero">
+      <div className={styles.rays} aria-hidden="true" />
+
       <div className={styles.featureGridContainer}>
-        <TransitionElement
-          animationClass="fadeup"
-          mountDelay={mountDelay}
-          loaderDelay={loaderDelay}
-        >
-          <h2 className={styles.fs700}>
-            <div className={styles.logoWithText}>
-              {/* HackIndore Logo */}
-              <Image
-                src="/assets/Hackindore.png"
-                alt="HackIndore Logo"
-                width={80}
-                height={80}
-                className={styles.heroLogo}
-                priority={true}
-              />
-              <AnimatedText>
-                <h1 className={styles.textPrimary}>HACKINDORE 3.0</h1>
-              </AnimatedText>
-            </div>
+        <div className={styles.heroGrid}>
+          <div className={styles.contentCol}>
+            <TransitionElement
+              animationClass="fadeup"
+              mountDelay={mountDelay}
+              loaderDelay={loaderDelay}
+            >
+              <div className={styles.titleBlock}>
+                <p className={styles.presents}>
+                  <span className={styles.hash}>#include</span> presents
+                </p>
+                <h1 className={styles.wordmarkHeading}>
+                  <Image
+                    src="/assets/hackindore-wordmark.png"
+                    alt="HackIndore 4.0"
+                    width={1024}
+                    height={194}
+                    className={styles.wordmark}
+                    priority={true}
+                  />
+                </h1>
+              </div>
 
-            {/* ✅ Partner Section */}
-            <div className={styles.partnerSection}>
-              <p className={styles.partnerLabel}>Coding Partner</p>
-              <Image
-                src="/assets/Encode AI.jpg" // place Encode AI logo in public/assets
-                alt="Encode AI Logo"
-                width={140}
-                height={60}
-                className={styles.partnerLogo}
-              />
-            </div>
+              <div className={styles.ledeBlock}>
+                <p className={styles.lede}>
+                  <strong>#include</strong> is back with SGSITS&apos; biggest
+                  hackathon. HackIndore 3.0 set the bar high &mdash; this time
+                  we&apos;re going <strong>bigger, bolder &amp; better.</strong>
+                </p>
 
-            <div>Where Creativity Meets Technology</div>
-            <ScramblingText data={tying_data_hero_page} />
-          </h2>
-          <div className={styles.timedate}>
-            <p>{date + ", "}</p> <p>{month}</p> <p id="y">{year}</p>
-            <br />
-            <div className={styles.timedateSmall}>
-              <p id="h">09</p>:<a id="m">00</a>
-              <p id="s">{"AM to "}</p>
-              <p id="h">09</p>:<p id="m">00</p>
-              <p id="s">
-                {"PM on " +
-                  dateOfHackIndore.toLocaleDateString("en", {
-                    weekday: "long",
-                  })}
-              </p>
-            </div>
+                <ul className={styles.statRow}>
+                  {stats.map(({ value, label }) => (
+                    <li key={label} className={styles.stat}>
+                      <span className={styles.statValue}>{value + " "}</span>
+                      <span className={styles.statLabel}>{label}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div
+                className={`winFrame ${styles.resumeFrame}`}
+                data-win-title="Boost_Your_Resume"
+              >
+                <ul className={styles.highlights}>
+                  {resumeHighlights.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className={styles.taglineBlock}>
+                <p className={styles.tagline}>
+                  Got the skills?
+                  <br />
+                  Time to show them off
+                </p>
+                <ScramblingText data={tying_data_hero_page} />
+
+                <div className={styles.timedate}>
+                  <p className={styles.dateLine}>
+                    {`${startDate} \u2013 ${endDate} ${month} ${year}`}
+                  </p>
+                  <p className={styles.timeLine}>
+                    {`11:00 AM \u2014 11:00 AM \u00B7 ${startWeekday} \u2013 ${endWeekday}`}
+                  </p>
+                </div>
+              </div>
+
+              <div className={styles.actionBlock}>
+                <div className={styles.ctaRow}>
+                  <a
+                    href={registrationFormLink}
+                    onClick={resgistrationFormOnClick}
+                    target="_blank"
+                    className={styles.email_link}
+                  >
+                    Register Now
+                  </a>
+                  <Link href="#timeline" className={styles.ghostLink}>
+                    View Timeline
+                  </Link>
+                </div>
+              </div>
+            </TransitionElement>
           </div>
-          <p>
-            A 12-Hour Hackathon Experience
-            <br />
-            Building <strong>Methodical Solutions</strong> to benefit the World
-          </p>
 
-          <a
-            href="https://unstop.com/o/lrPx7og?lb=a8UehKVd"
-            onClick={resgistrationFormOnClick}
-            target="_blank"
-            className={styles.email_link}
-          >
-            Register For HackIndore
-          </a>
-        </TransitionElement>
+          <div className={styles.visualCol} aria-hidden="true">
+            <span className={styles.figureGlow} />
+            <Image
+              src="/assets/hero-figure.png"
+              alt=""
+              width={345}
+              height={351}
+              className={styles.figure}
+              style={{ width: "auto", height: "62rem", maxWidth: "none" }}
+              priority={true}
+            />
+          </div>
+        </div>
 
         <div className={styles.scrollIndicatorWrapper}>
           <Link

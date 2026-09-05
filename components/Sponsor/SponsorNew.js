@@ -57,7 +57,7 @@ const SponsorsNew = () => {
                   spacing={1}
                   key={spo.id}
                   sx={{
-                    backgroundColor: "#361857",
+                    backgroundColor: "#1b1b1b",
                     padding: "0",
                     borderRadius: "10px",
                     margin: "0.4rem",

@@ -12,22 +12,31 @@
 }
 
 .points li {
-  background: #ffffff;
-  padding: 16px 20px;
+  background: var(--hi-panel);
+  padding: 16px 20px 16px 28px;
   margin: 16px 0;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid var(--hi-line-soft);
+  border-radius: 0;
+  box-shadow: 6px 6px 0 rgba(6, 29, 107, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-  color: #333; /* readable dark text */
-  border-left: none; /* remove old border */
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+    border-color 0.25s ease;
+  color: var(--hi-white);
   position: relative;
   overflow: hidden;
 }
 
-/* Gradient stripe on left instead of plain border */
+.points li:hover {
+  background: rgba(26, 84, 255, 0.24);
+  border-color: var(--hi-line);
+  box-shadow: 6px 6px 0 rgba(6, 29, 107, 0.45), 0 0 26px var(--hi-glow);
+}
+
+/* Electric stripe on the left edge */
 .points li::before {
   content: "";
   position: absolute;
@@ -35,34 +44,30 @@
   top: 0;
   bottom: 0;
   width: 8px;
-  border-radius: 14px 0 0 14px;
-  background: linear-gradient(180deg, #a855f7, #ec4899);
-  /* purple → pink */
+  background: linear-gradient(180deg, var(--hi-blue-400), var(--hi-blue-700));
+  box-shadow: 0 0 14px var(--hi-glow);
 }
 
 .number {
-  font-weight: bold;
-  color: #fff;
-  background: linear-gradient(135deg, #a855f7, #ec4899);
-  border-radius: 50%;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--hi-white);
+  background: var(--hi-blue-700);
+  border: 2px solid var(--hi-line);
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
   flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(168, 85, 247, 0.4);
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .points li:hover .number {
-  background: linear-gradient(135deg, #9333ea, #db2777);
-}
-
-/* Number hover effect */
-.points li:hover .number {
-  background: linear-gradient(135deg, #0056d2, #0099cc);
+  background: var(--hi-blue);
+  box-shadow: 0 0 18px var(--hi-glow);
 }
 
 /* Image Section */
@@ -76,7 +81,9 @@
 
 .img {
   width: 100% !important;
-  border-radius: 18px;
+  border: 2px solid var(--hi-line);
+  border-radius: 0;
+  box-shadow: 8px 8px 0 rgba(6, 29, 107, 0.5), 0 0 40px rgba(26, 84, 255, 0.25);
 }
 
 /* Responsive Design */
@@ -101,7 +108,7 @@
     font-size: 16px;
   }
   .number {
-    font-size: 18px;
+    font-size: 11px;
   }
 }
 

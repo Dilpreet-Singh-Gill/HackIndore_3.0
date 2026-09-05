@@ -12,11 +12,13 @@ import RegistrationProcess from "@/components/RegistrationProcess/RegistrationPr
 import Instructions from "@/components/Instructions/Instructions";
 import ScrollUpBtn from "@/components/ScrollUpBtn/ScrollUpBtn";
 import SponsorsNew from "@/components/Sponsor/SponsorNew";
+import Marquee from "@/components/Marquee/Marquee";
 
 
 const Home = () => (
   <div id="home_route">
     <Hero />
+    <Marquee />
     <Countdown />
     <KeyTakeaways />
     <Timeline />

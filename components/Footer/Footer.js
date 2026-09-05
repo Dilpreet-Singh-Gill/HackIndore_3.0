@@ -8,14 +8,9 @@ import Heading from "../Heading/Heading";
 
 const Footer = () => {
   return (
-    <footer id="contact" className="footer container">
-      {/* <div className="headings_glittered">
-        <AnimatedText>
-          <h1>Contact Us</h1>
-        </AnimatedText>
-      </div> */}
+    <footer id="contact" className={`${styles.footer} footer container`}>
       <div className="headings_glittered">
-        <Heading>Contact Us</Heading>
+        <Heading eyebrow="Get in touch">Contact Us</Heading>
       </div>
       <Map />
       <Container className={styles.responsive}>

@@ -1,100 +1,148 @@
-.countdownWrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 50px;
-}
 .realWrapper {
   position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: visible;
 }
 
-.heading {
+.timerStage {
   position: relative;
-  top: 30px;
-}
-
-.countdownItem {
-  font-size: 60px;
+  isolation: isolate;
+  width: 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
-  flex-direction: column;
-  line-height: 30px;
-  margin: 50px;
-  padding-top: 10px;
+  padding: 2.4rem 0 1.2rem;
+}
+
+.timerStage :global(.handsMotif) {
+  z-index: 0;
+}
+
+/* ---------------------- Timer row ---------------------- */
+.countdownWrapper {
   position: relative;
-  width: 100px;
-  height: 100px;
+  z-index: 2;
+  isolation: isolate;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(1.1rem, 3.6vw, 3rem);
+  margin-top: 0;
+  width: 100%;
 }
 
-.countdownItem span {
-  font-size: 18px;
-  margin-top: 10px;
-  font-weight: 600;
+.unit {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+}
+
+.value {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 6.8vw, 4.15rem);
+  line-height: 1;
+  color: var(--hi-white);
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 26px var(--hi-glow), 0 0 64px rgba(26, 84, 255, 0.32);
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: clamp(0.58rem, 1.4vw, 0.76rem);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  color: var(--hi-blue-200);
+  white-space: nowrap;
 }
 
-.countdownSvg {
+.divider {
+  align-self: center;
+  width: 2px;
+  height: clamp(2.2rem, 5vw, 3.4rem);
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      var(--hi-line-soft) 22%,
+      var(--hi-line-soft) 78%,
+      rgba(255, 255, 255, 0));
+}
+
+/* ---------------------- Decorative digit strip ---------------------- */
+.odometer {
   position: absolute;
-  top: 0;
-  color: aqua;
-  left: 0;
-  width: 100px;
-  height: 100px;
-  transform: scale(1.5);
+  top: 50%;
+  right: -0.75rem;
+  translate: 0 -50%;
+  width: 5.5rem;
+  height: 21rem;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+  -webkit-mask-image: linear-gradient(to bottom,
+      transparent,
+      #000 24%,
+      #000 76%,
+      transparent);
+  mask-image: linear-gradient(to bottom,
+      transparent,
+      #000 24%,
+      #000 76%,
+      transparent);
 }
 
-@media only screen and (max-width: 800px) {
-  .countdownSvg {
-    transform: scale(1.2);
-  }
-  .countdownItem {
-    margin: 20px;
-    font-size: 40px;
-  }
+.odometerTrack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: odometerScroll 26s linear infinite;
+}
 
+.odometerTrack span {
+  font-family: var(--font-display);
+  font-size: 2.05rem;
+  line-height: 1;
+  color: var(--hi-white);
+  font-variant-numeric: tabular-nums;
 }
-@media only screen and (max-width: 560px) {
-  .countdownSvg {
-    transform: scale(1);
-  }
-  .countdownItem {
-    margin: 8px;
-    font-size: 25px;
-  }
-  .countdownItem span {
-    font-size: 14px;
-    margin-top: 0;
-  }
-}
-@media only screen and (max-width: 465px) {
-  .countdownSvg {
-    transform: scale(0.8);
-  }
-  .countdownItem {
-    margin: 0px;
-    font-size: 20px;
-  }
-  .countdownItem span {
-    font-size: 10px;
-    margin-top: -10px;
+
+@keyframes odometerScroll {
+  to {
+    translate: 0 -50%;
   }
 }
 
-@media only screen and (max-width: 390px) {
-  .countdownSvg {
-    transform: scale(0.7);
+@media only screen and (max-width: 1200px) {
+  .odometer {
+    display: none;
   }
-  .countdownItem {
-    margin: -8px;
-    font-size: 18px;
+}
+
+/* ---------------------- Responsive ---------------------- */
+/* Below this width the single row gets cramped, so switch to a 2x2 grid
+   and drop the dividers rather than letting them wrap awkwardly. */
+@media only screen and (max-width: 700px) {
+  .countdownWrapper {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    justify-content: center;
+    gap: 1.6rem 2.4rem;
   }
-  .countdownItem span {
-    font-size: 9px;
-    margin-top: -10px;
+
+  .divider {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .countdownWrapper {
+    gap: 1.2rem 1.5rem;
+  }
+
+  .unit {
+    gap: 0.45rem;
   }
 }

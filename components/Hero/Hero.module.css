@@ -1,198 +1,414 @@
-.textPrimary {
-  background: linear-gradient(93.51deg, #3adbfd 25.84%, #f560fa 70.18%);
-  /* background-image: linear-gradient(
-    to right top,
-    #bfc321,
-    #9ece48,
-    #7cd66d,
-    #59db92,
-    #33dfb4,
-    #00d6cf,
-    #00cbe2,
-    #00bdea,
-    #009eec,
-    #007ce7,
-    #0053d3,
-    #5e0dad
-  ); */
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 4.68rem !important;
-  font-weight: 700 !important;
-  margin-bottom: 0;
-}
-
-.text-accent {
-  color: var(--clr-secondary);
-}
-
-.fs700 {
-  font-size: 3.5rem;
-  line-height: 1;
-}
-
-@media only screen and (max-width: 596px) {
-  .textPrimary {
-    font-size: 2.4rem !important;
-  }
-
-  .fs700 {
-    font-size: 1.8rem;
-  }
-}
-
-.bg-primary {
-  background-color: var(--clr-primary);
-}
-
-.bg-accent {
-  background-color: var(--clr-accent);
-}
-
 .container {
+  position: relative;
   max-width: 100%;
   margin: 0 auto;
   margin-top: 2rem;
   width: 100% !important;
   min-height: calc(100vh - 66.38px - 2rem);
-  /* 100vh - height of navbar - margin-top */
-}
-
-.flex {
-  display: flex;
-  gap: var(--gap, 1rem);
-}
-
-.animation {
-  animation: typewriter 2s setps(8) 1s infinite both,
-    blinkCursor 500ms steps(8) infinite;
-}
-
-@keyframes typewriter {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 200px;
-  }
-}
-.logoWithText {
-  display: flex;
-  align-items: center;
-  gap: 12px; /* space between logo and text */
-  justify-content: center; /* center align */
-}
-
-.heroLogo {
-  border-radius: 12px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.heroLogo:hover {
-  transform: scale(1.05); /* slight zoom on hover */
-}
-
-/* ------------------ NEW PARTNER STYLES ------------------ */
-.partnerSection {
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 6px;
+  justify-content: center;
 }
 
-.partnerLabel {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #aaa;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+/* Poster-style light burst behind the wordmark */
+.rays {
+  position: absolute;
+  top: -12%;
+  left: -25%;
+  right: -25%;
+  height: 85%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(closest-side at 40% 34%,
+      rgba(150, 195, 255, 0.32) 0%,
+      rgba(26, 84, 255, 0.18) 45%,
+      rgba(1, 3, 14, 0) 78%),
+    repeating-conic-gradient(from 196deg at 42% 30%,
+      rgba(190, 220, 255, 0.09) 0deg 1.4deg,
+      rgba(1, 3, 14, 0) 1.4deg 7deg);
+  filter: blur(14px);
+  animation: rayBreathe 11s var(--easing) infinite;
 }
 
-.partnerLogo {
-  object-fit: contain;
-  max-width: 180px;
-  height: auto;
+@keyframes rayBreathe {
+
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
-.email_link {
-  /* --color: #64ffda; */
-  /* --bg-color: #64ffda1a; */
-  --color: rgb(179, 250, 255);
-  --bg-color: rgba(179, 250, 255, 0.1);
-
-  color: var(--color);
-  border: 2px solid var(--color);
-  background-color: transparent;
-  border-radius: 4px;
-  padding: 1.2rem 1.7rem;
-  font-size: 1.25rem;
-  font-family: inherit;
-  line-height: 1;
-  text-decoration: none;
-  cursor: pointer;
-  margin-top: 50px;
-
-  display: inline-block;
-  text-decoration-skip-ink: auto;
+.featureGridContainer {
   position: relative;
-  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0 1rem;
 }
 
-.email_link:hover,
-.email_link:focus,
-.email_link:active {
-  outline: none;
-  color: var(--color);
-  background-color: var(--bg-color);
+/* Single column by default; the figure only earns its column once there is
+   room for it without squeezing the wordmark. */
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+/* ---------------------- Hero figure ---------------------- */
+/* Deliberately unmasked: a mask here would clip the bloom to this box and
+   leave a hard-edged rectangle around the figure. */
+.visualCol {
+  position: relative;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  overflow: visible;
+}
+
+/* Sits behind the head so the silhouette is backlit the way it is on the
+   poster, instead of reading as a flat black shape on the background. */
+.figureGlow {
+  position: absolute;
+  top: 30%;
+  left: 62%;
+  translate: -50% -50%;
+  width: 56rem;
+  height: 56rem;
+  pointer-events: none;
+  background: radial-gradient(closest-side,
+      rgba(170, 208, 255, 0.5) 0%,
+      rgba(38, 98, 255, 0.3) 40%,
+      rgba(1, 3, 14, 0) 74%);
+  filter: blur(24px);
+  animation: figureBloom 7s var(--easing) infinite;
+}
+
+.figure {
+  position: relative;
+  z-index: 1;
+  /* Explicit height so Next/Image inline sizing cannot cap the figure. */
+  width: auto !important;
+  height: 62rem !important;
+  max-width: none !important;
+  min-height: 62rem;
+  object-fit: contain;
+  opacity: 0.7;
+  filter: saturate(1.08) contrast(1.02) blur(2.5px);
+  /* Two feathers, intersected: the vertical one dissolves the bottom of the
+     cutout, the horizontal one melts the laptop's straight back edge into the
+     copy side. No drop-shadow here on purpose, since a mask would clip it to
+     the border box and reintroduce a hard edge. */
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.4) 93%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 12%);
+  mask-image:
+    linear-gradient(to bottom, #000 0%, #000 78%, rgba(0, 0, 0, 0.4) 93%, transparent 100%),
+    linear-gradient(to right, transparent 0%, #000 12%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  animation: figureFloat 9s var(--easing) infinite;
+}
+
+@keyframes figureFloat {
+
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -14px;
+  }
+}
+
+@keyframes figureBloom {
+
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Declared after .visualCol so this wins without extra specificity. */
+@media (min-width: 1280px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  }
+
+  .visualCol {
+    display: flex;
+  }
+}
+
+/* ---------------------- Title block ---------------------- */
+.titleBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.presents {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--hi-blue-200);
+}
+
+.hash {
+  color: var(--hi-white);
+}
+
+.wordmarkHeading {
+  margin: 0;
+  line-height: 0;
+}
+
+.wordmark {
+  width: 100%;
+  max-width: 44rem;
+  height: auto;
+  filter: drop-shadow(0 0 26px var(--hi-glow))
+    drop-shadow(0 0 70px rgba(26, 84, 255, 0.4));
+  animation: wordmarkGlow 6s var(--easing) infinite;
+}
+
+@keyframes wordmarkGlow {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 22px var(--hi-glow)) drop-shadow(0 0 60px rgba(26, 84, 255, 0.32));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 34px var(--hi-glow)) drop-shadow(0 0 90px rgba(26, 84, 255, 0.5));
+  }
+}
+
+/* ---------------------- Lede + stats ---------------------- */
+.ledeBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.lede {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--hi-blue-200);
+}
+
+.lede strong {
+  color: var(--hi-white);
+  font-weight: 700;
+}
+
+.statRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.statRow li {
+  list-style: none;
+  display: block;
+}
+
+.stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  padding: 0.6rem 0.95rem;
+  border: 2px solid var(--hi-line-soft);
+  background-color: var(--hi-panel);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: var(--transition);
+}
+
+.stat:hover {
+  border-color: var(--hi-line);
+  background-color: rgba(26, 84, 255, 0.26);
+  box-shadow: 0 0 24px var(--hi-glow);
+  translate: 0 -3px;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--hi-white);
+}
+
+.statGap {
+  display: inline-block;
+  width: 0.7em;
+  flex-shrink: 0;
+}
+
+.statLabel {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hi-blue-200);
+}
+
+/* ---------------------- Resume window ---------------------- */
+.resumeFrame {
+  max-width: 30rem;
+}
+
+.highlights {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.highlights li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 1.02rem;
+  color: var(--hi-white);
+}
+
+.highlights li::before {
+  content: "";
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--hi-blue-400);
+  box-shadow: 0 0 12px var(--hi-glow);
+}
+
+/* ---------------------- Tagline + date ---------------------- */
+.taglineBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.tagline {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 3.4vw, 1.9rem);
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--hi-white);
+  text-shadow: 0 0 20px var(--hi-glow);
 }
 
 .timedate {
-  font: small-caps lighter 43px/120% "Poppins", sans-serif;
-  text-align: left;
-  margin: 20px 0;
-  color: #fff;
-  border-left: 3px solid #3adbfd;
-  padding: 20px;
+  margin-top: 0.6rem;
+  padding: 16px 20px;
+  border-left: 4px solid var(--hi-blue);
+  box-shadow: -10px 0 26px -12px var(--hi-glow);
 }
 
-.timedate p {
+.dateLine {
+  margin: 0;
+  font: small-caps lighter clamp(1.6rem, 5vw, 2.6rem) / 120% "Poppins", sans-serif;
+  color: var(--hi-white);
+}
+
+.timeLine {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 2.6vw, 1.35rem);
+  letter-spacing: 0.08em;
+  color: var(--hi-blue-200);
+}
+
+/* ---------------------- Actions ---------------------- */
+.actionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 0.5rem;
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.email_link,
+.ghostLink {
+  border-radius: 0;
+  padding: 1.05rem 1.7rem;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
   display: inline-block;
+  position: relative;
+  transition: var(--transition);
 }
 
-.timedateSmall p {
-  display: inline-block;
+.email_link {
+  color: var(--hi-white);
+  border: 2px solid var(--hi-white);
+  background-color: var(--hi-blue-700);
+  box-shadow: 5px 5px 0 rgba(1, 6, 30, 0.85);
 }
 
-.timedateSmall {
-  font: small-caps lighter 30px/120% "Poppins", sans-serif;
-  margin-top: 15px;
+.email_link:hover,
+.email_link:focus-visible,
+.email_link:active {
+  outline: none;
+  color: var(--hi-white);
+  background-color: var(--hi-blue);
+  box-shadow: 0 0 0 rgba(1, 6, 30, 0.85), 0 0 30px var(--hi-glow);
+  translate: 5px 5px;
 }
 
-@media only screen and (max-width: 690px) {
-  .timedate {
-    font: small-caps lighter 35px/120% "Poppins", sans-serif;
-  }
-
-  .timedateSmall {
-    font: small-caps lighter 28px/120% "Poppins", sans-serif;
-  }
+.ghostLink {
+  color: var(--hi-blue-200);
+  border: 2px solid var(--hi-line-soft);
+  background-color: transparent;
 }
 
-@media only screen and (max-width: 581px) {
-  .timedate {
-    font: small-caps lighter 25px/120% "Poppins", sans-serif;
-  }
-
-  .timedateSmall {
-    font: small-caps lighter 20px/120% "Poppins", sans-serif;
-  }
+.ghostLink:hover,
+.ghostLink:focus-visible {
+  outline: none;
+  color: var(--hi-white);
+  border-color: var(--hi-line);
+  background-color: rgba(26, 84, 255, 0.16);
 }
 
-/* ---------------------------------------------------------------- */
-
+/* ---------------------- Scroll indicator ---------------------- */
 .scrollIndicatorWrapper {
   position: relative;
   bottom: 16px;
@@ -219,8 +435,8 @@
 }
 
 .scrollIndicator {
-  border: 2px solid rgb(255 255 255 / 0.4);
-  border-radius: 20px;
+  border: 2px solid rgb(255 255 255 / 0.55);
+  border-radius: 0;
   width: 26px;
   height: 38px;
   transition-property: opacity;
@@ -233,8 +449,7 @@
   content: "";
   height: 7px;
   width: 2px;
-  background: rgb(255 255 255 / 0.4);
-  border-radius: 4px;
+  background: rgb(255 255 255 / 0.6);
   position: absolute;
   top: 6px;
   left: 50%;
@@ -267,67 +482,38 @@
     opacity: 0;
   }
 }
-.logoWithText {
-  display: flex;
-  align-items: center;
-  gap: 12px; /* space between logo and text */
-  justify-content: center; /* center align */
-}
 
-.heroLogo {
-  border-radius: 12px;
-  object-fit: contain;
-  transition: transform 0.3s ease;
-}
-
-.heroLogo:hover {
-  transform: scale(1.05); /* slight zoom on hover */
-}
-
-/* .box__ p span {
-  font: 700 1em/1 "Poppins", sans-serif;
-  font-size: 4.68rem !important;
-  font-weight: 700 !important;
-  letter-spacing: 0;
-  padding: 0.25em 0 0.325em;
-  display: block;
-  margin: 0 auto;
-  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
-  background: url("https://i.ibb.co/RDTnNrT/animated-text-fill.png") repeat-y;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-animation: aitf 80s linear infinite;
-  -webkit-transform: translate3d(0, 0, 0);
-  -webkit-backface-visibility: hidden;
-}
-.container_ .box__ {
-  display: flex;
-  flex-direction: column;
-}
-@keyframes aitf {
-  0% {
-    background-position: 0% 50%;
+/* ---------------------- Responsive ---------------------- */
+@media only screen and (max-width: 991px) {
+  .contentCol {
+    gap: 1.3rem;
   }
-  100% {
-    background-position: 100% 50%;
+
+  .lede {
+    font-size: 1rem;
   }
 }
 
-@media (max-width: 800px) {
-  .container_ p {
-    font-size: 20px;
-    width: 80%;
-    padding: 0;
-    margin: 0;
-  }
-} */
+@media (prefers-reduced-motion: reduce) {
 
-.box__ {
-  display: flex;
-  flex-direction: column;
+  .figure,
+  .figureGlow {
+    animation: none;
+  }
 }
-.box__ p {
-  display: flex;
-  margin-bottom: 10px;
+
+@media only screen and (max-width: 596px) {
+  .container {
+    margin-top: 1rem;
+  }
+
+  .highlights li {
+    font-size: 0.95rem;
+  }
+
+  .ctaRow > .email_link,
+  .ctaRow > .ghostLink {
+    width: 100%;
+    text-align: center;
+  }
 }

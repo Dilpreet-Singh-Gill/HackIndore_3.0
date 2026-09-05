@@ -10,7 +10,7 @@ const PreLoader = ({ setLoading }) => {
         if (vara) return;
         vara = new Vara("#vara-container", "fonts/SatisfySL.json",
             [{
-                text: "HackIndore 3.0", // String, text to be shown
+                text: "HackIndore 4.0", // String, text to be shown
                 fontSize: 35, // Number, size of the text
                 strokeWidth: 1.5, // Width / Thickness of the stroke
                 color: "white", // Color of the text

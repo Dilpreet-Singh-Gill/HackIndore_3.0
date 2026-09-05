@@ -77,13 +77,8 @@ const Faq = () => {
 
   return (
     <section ref={revealContainer} className={styles.container} id="faq">
-      {/* <div className="headings_glittered">
-                <AnimatedText>
-                    <h1 className={styles.heading}>FAQs</h1>
-                </AnimatedText>
-            </div> */}
       <div className="headings_glittered">
-        <Heading>FAQ's</Heading>
+        <Heading eyebrow="Everything you asked">FAQ's</Heading>
       </div>
 
       <div>{frequentlyAskedQuestions.map(FrequentlyAsked)}</div>

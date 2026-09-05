@@ -1,10 +1,6 @@
-import React from "react";
-import Box from "@mui/material/Box";
-import { Stack } from "@mui/system";
 import Heading from "../Heading/Heading";
 import styles from "./About.module.css";
 import useScrollReveal from "@/hooks/useScrollReveal";
-import { motion } from "framer-motion";
 import {
   SiReact,
   SiNodedotjs,
@@ -14,91 +10,69 @@ import {
   SiGit,
 } from "react-icons/si";
 
+const techIcons = [
+  { Icon: SiReact, label: "React", color: "#61DAFB" },
+  { Icon: SiNodedotjs, label: "Node", color: "#68A063" },
+  { Icon: SiPython, label: "Python", color: "#FFD43B" },
+  { Icon: SiMongodb, label: "Mongo", color: "#47A248" },
+  { Icon: SiJavascript, label: "JS", color: "#F7DF1E" },
+  { Icon: SiGit, label: "Git", color: "#F05032" },
+];
+
+const pillars = ["Learn", "Collaborate", "Showcase"];
+
 const AboutUs = () => {
   const revealContainer = useScrollReveal();
 
-  const techIcons = [
-    { Icon: SiReact, color: "#61DAFB" },
-    { Icon: SiNodedotjs, color: "#68A063" },
-    { Icon: SiPython, color: "#FFD43B" },
-    { Icon: SiMongodb, color: "#47A248" },
-    { Icon: SiJavascript, color: "#F7DF1E" },
-    { Icon: SiGit, color: "#F05032" },
-  ];
-
   return (
-    <section id="aboutus" ref={revealContainer}>
+    <section id="aboutus" ref={revealContainer} className={styles.container}>
       <div className="headings_glittered">
-        <Heading>About Us</Heading>
+        <Heading eyebrow="Who we are">About Us</Heading>
       </div>
 
-      <Stack
-        direction={{ md: "row", xs: "column-reverse" }}
-        gap={1}
-        className={styles.AboutContainer}
-      >
-        {/* LEFT TEXT */}
-        <Stack
-          direction={"column"}
-          gap={5}
-          sx={{ padding: "30px 15px" }}
-          alignContent="center"
-          justifyContent="center"
-          className={styles.text}
+      <div className={styles.layout}>
+        <div
+          className={`winFrame ${styles.copyFrame}`}
+          data-win-title="IT_Department"
         >
-          <p className={styles.medium}>
-            The Information Technology Department of SGSITS is organizing a hackathon to empower
-            individuals to explore, innovate, and master the world of technology.
+          <p className={styles.lede}>
+            The Information Technology Department of SGSITS is organizing a
+            hackathon to empower individuals to explore, innovate, and master
+            the world of technology.
           </p>
-          <p className={styles.small}>
-            We believe that technology is the driving force of the modern world, and through this
-            event, we aim to create a vibrant community where participants can learn, collaborate,
-            and showcase their creativity.
-            <br />
-            <br />
-            Our goal is to equip students with the skills, experience, and confidence needed to
-            excel in the tech industry and beyond, while fostering innovation, problem-solving, and
-            teamwork.
+          <p className={styles.body}>
+            We believe that technology is the driving force of the modern world,
+            and through this event, we aim to create a vibrant community where
+            participants can learn, collaborate, and showcase their creativity.
           </p>
-        </Stack>
+          <p className={styles.body}>
+            Our goal is to equip students with the skills, experience, and
+            confidence needed to excel in the tech industry and beyond, while
+            fostering innovation, problem-solving, and teamwork.
+          </p>
+          <ul className={styles.pillars}>
+            {pillars.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
 
-        {/* RIGHT TECH ICONS GRID */}
-        {/* RIGHT TECH ICONS CLOUD */}
-        <Box
-          className={styles.iconsContainer}
-          sx={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)", // 3 icons per row
-            gap: "20px", // space between items
-            padding: "20px",
-            justifyItems: "center", // center icons horizontally
-          }}
+        <div
+          className={`winFrame ${styles.stackFrame}`}
+          data-win-title="Tech_Stack"
         >
-          {techIcons.map(({ Icon, color }, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.2, rotate: 5 }}
-              animate={{ y: [0, -12, 0] }}
-              transition={{ repeat: Infinity, duration: 3, delay: i * 0.2 }}
-              style={{
-                background: "rgba(0, 0, 0, 0.7)",
-                padding: "25px",
-                borderRadius: "20px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "90px",
-                height: "90px",
-                boxShadow: `0 0 25px ${color}`,
-                transition: "all 0.3s ease-in-out",
-              }}
-            >
-              <Icon size={50} color={color} />
-            </motion.div>
-          ))}
-        </Box>
-
-      </Stack>
+          <ul className={styles.icons}>
+            {techIcons.map(({ Icon, label, color }) => (
+              <li key={label} className={styles.iconTile}>
+                <span className={styles.iconGlyph} style={{ color }}>
+                  <Icon size={28} color={color} aria-hidden="true" />
+                </span>
+                <span className={styles.iconLabel}>{label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </section>
   );
 };

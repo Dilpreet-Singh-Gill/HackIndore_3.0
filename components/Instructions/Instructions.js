@@ -22,7 +22,7 @@ const Instructions = () => {
         </AnimatedText>
       </div> */}
       <div className="headings_glittered">
-        <Heading>Important Notes</Heading>
+        <Heading eyebrow="Read before registering">Important Notes</Heading>
       </div>
       <Stack
         direction={{ md: "row", xs: "column-reverse" }}

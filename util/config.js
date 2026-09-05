@@ -1,6 +1,7 @@
-export const registrationFormLink = "";
+export const registrationFormLink =
+  "https://unstop.com/o/zCTdoXB?utm_medium=Share&utm_source=hackindo46796&utm_campaign=Online_coding_challenge";
 export const resgistrationFormOnClick = (event) => {
-  if (registrationFormLink === "https://unstop.com/o/lrPx7og?lb=a8UehKVd") {
+  if (!registrationFormLink) {
     event.preventDefault();
     alert("The registration process has not yet begun.");
   }
@@ -64,15 +65,15 @@ export const sponsorData = [
   },
 ];
 
-export const dateOfHackIndore = new Date(2025, 8, 13, 10, 0, 0);
-export const endingDateOfHackIndore = new Date(2025, 8, 20, 18, 0, 0);
+export const dateOfHackIndore = new Date(2026, 8, 27, 11, 0, 0);
+export const endingDateOfHackIndore = new Date(2026, 8, 28, 11, 0, 0);
 
 export const rightSideBarText = "Tech Club";
 
 export const tying_data_hero_page = ["Think 💡", "Code 🖥️", "Innovate 🚀"];
 
 export const countdownDetails = {
-  timeTillDate: "2025-09-13 09:00",
+  timeTillDate: "2026-09-27 11:00",
   timeFormat: "YYYY-MM-DD HH:mm",
 };
 
@@ -239,36 +240,40 @@ export const frequentlyAskedQuestions = [
 export const timelineData = [
   {
     text: "Registration Starts",
-    date: "August 17 2025",
+    date: "September 05 2026",
   },
   {
     text: "Theme Release",
-    date: "August 25 2025",
+    date: "September 05 2026",
+  },
+  {
+    text: "Problem Statement Release",
+    date: "September 07 2026",
   },
   {
     text: "Registration Ends",
-    date: "August 31 2025",
+    date: "August 18 2026",
   },
   {
-    text: "Presentation Rounds",
-    date: "September 01 2025",
+    text: "Presentation Round",
+    date: "September 18 2026",
   },
   {
     text: "Final Hackathon, SGSITS",
-    date: "September 20 2025",
+    date: "September 27 2026",
   },
   {
     text: "Hackathon Ends",
-    date: "September 20 2025",
+    date: "September 28 2026",
   },
   {
     text: "Announcement of Winners",
-    date: "September 20 2025",
+    date: "September 28 2026",
   },
 ];
 
 export const contactDetails = {
-  numbers: ["+91 8435358999"],
+  numbers: ["+91 9238205180"],
   email: "hackindore.gsits@gmail.com",
   address:
     "Shri Govindram Seksaria Institute of Technology and Science, 23, Sir M. Visvesvaraya Marg, Vallabh Nagar, Indore, Madhya Pradesh 452003, India",

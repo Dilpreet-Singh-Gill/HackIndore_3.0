@@ -1,70 +1,143 @@
 .container {
+  position: relative;
   margin: 40px 0;
 }
 
-.keyPoints {
-  word-spacing: 1px;
-  font-size: 17px; /* slightly smaller but denser */
-  line-height: 1.5; /* tighter line spacing */
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 1.75rem;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 10px 20px;
-  width: 55% !important; /* text takes more space */
+  gap: 0.45rem;
+  padding: 1.05rem 1.1rem 1.15rem;
+  border: 2px solid var(--hi-line-soft);
+  background-color: var(--hi-panel);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: var(--transition);
 }
 
-.keyPoints p {
-  margin-bottom: 8px; /* reduce extra blank space */
-  text-align: justify; /* cleaner block look */
+.card:hover,
+.card:focus-within {
+  border-color: var(--hi-line);
+  background-color: rgba(26, 84, 255, 0.24);
+  box-shadow: 0 0 26px var(--hi-glow);
+  translate: 0 -3px;
 }
 
-.image {
-  width: 45% !important; /* image takes less space */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.index {
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  color: var(--hi-blue-400);
+  text-shadow: 0 0 10px var(--hi-glow);
 }
 
-.img {
+.cardTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--hi-white);
+}
+
+.cardBody {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--hi-blue-200);
+}
+
+.posterFrame {
+  position: sticky;
+  top: 5.5rem;
+  padding: 34px 12px 12px;
+}
+
+.qrLink {
+  display: block;
+}
+
+.poster {
+  display: block;
   width: 100% !important;
-  max-width: 380px; /* prevent poster from being too big */
-  border-radius: 14px;
+  height: auto !important;
+  max-width: 100%;
+  aspect-ratio: 1;
+  background-color: #fff;
+  border: 2px solid var(--hi-line-soft);
   object-fit: contain;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.qrCaption {
+  margin: 0.75rem 0 0.15rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--hi-blue-200);
+}
+
+@media only screen and (max-width: 1080px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.7fr);
+  }
+
+  .cardTitle {
+    font-size: 0.7rem;
+  }
+
+  .cardBody {
+    font-size: 0.9rem;
+  }
 }
 
 @media only screen and (max-width: 900px) {
-  .keyContainer {
+  .layout {
     display: flex;
-    align-items: center;
-    flex-direction: column-reverse;
-    width: 100% !important;
-    gap: 20px;
+    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 
-  .keyPoints {
-    width: 100% !important;
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  .image {
-    width: 100% !important;
-  }
-
-  .img {
-    max-width: 300px; /* smaller poster on mobile */
+  .posterFrame {
+    position: static;
+    max-width: 360px;
+    margin: 0 auto;
+    order: -1;
   }
 }
 
-@media only screen and (max-width: 480px) {
-  .keyPoints {
-    padding: 0 12px;
-    font-size: 15px;
-    line-height: 1.4;
+@media only screen and (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 0.95rem 1rem;
   }
 }
 
-.keyPoints > p:first-of-type {
-  margin-top: 0 !important;
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .card:focus-within {
+    translate: 0 0;
+  }
 }

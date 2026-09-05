@@ -10,7 +10,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  background: linear-gradient(to right, transparent, #24acff);
+  background: linear-gradient(to right, transparent, var(--hi-blue-400));
   height: 3px;
   width: 100%;
   opacity: 1;

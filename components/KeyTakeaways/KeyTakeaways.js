@@ -1,18 +1,57 @@
 import useScrollReveal from "@/hooks/useScrollReveal";
-import AnimatedText from "../AnimatedText/AnimatedText";
-import { Stack } from "@mui/system";
-import { useMediaQuery } from "@mui/material";
 import styles from "./KeyTakeaways.module.css";
 import Heading from "../Heading/Heading";
 import Image from "next/image";
-import { useState } from "react";
+import { registrationFormLink } from "@/util/config";
 
-// const poster = "hackindore3-poster.jpg"
-const poster = "/assets/Flyer.png";
+const qr = "/Hackindore 4.0 QR.png";
+
+const takeaways = [
+  {
+    n: "01",
+    title: "Ship a real project",
+    body: "A golden chance to unleash the hidden talent of solving real-world problems and convert your ideas into a project.",
+  },
+  {
+    n: "02",
+    title: "T-shirts & goodies",
+    body: "Walk away with T-shirts and goodies from the event.",
+  },
+  {
+    n: "03",
+    title: "Certificates for all",
+    body: "Certificates to all the participants.",
+  },
+  {
+    n: "04",
+    title: "Expert review",
+    body: "Get your project reviewed by our expert panel.",
+  },
+  {
+    n: "05",
+    title: "Internships",
+    body: "Showcase your coding and innovative skills in front of company officials and get internships.",
+  },
+  {
+    n: "06",
+    title: "Resume boost",
+    body: "Add value to your resume or CV.",
+  },
+  {
+    n: "07",
+    title: "Prizes & goodies",
+    body: "Chance to win exciting prizes and goodies.",
+  },
+  {
+    n: "08",
+    title: "Food on us",
+    body: "Free food, snacks, and beverages will be provided for the participants.",
+  },
+];
 
 const KeyTakeaways = () => {
   const revealContainer = useScrollReveal();
-  // const isSmall = useMediaQuery("(max-width:540px)")
+
   return (
     <section
       id="keytakeaways"
@@ -20,48 +59,44 @@ const KeyTakeaways = () => {
       className={styles.container}
     >
       <div className="headings_glittered">
-        <Heading>Key Takeaways</Heading>
+        <Heading eyebrow="Why you should join">Key Takeaways</Heading>
       </div>
 
-      <Stack
-        direction={{ md: "row", xs: "column-reverse" }}
-        gap={1}
-        className={styles.keyContainer}
-      >
-        <div className={styles.keyPoints}>
-          <div className={styles.points}>
-            <p>
-              1. Golden chance to unleash the hidden talent of solving real
-              world problems and to convert your ideas into project.
-            </p>
-            <p>2. T-shirts and Goodies</p>
-            <p>3. Certificates to all the participants</p>
-            <p>4. Get your project reviewed by our expert panel.</p>
-            <p>
-              5. Opportunity to showcase your coding and innovative skills in
-              front of company officials and get internships.
-            </p>
-            <p>6. Add value to your resume or CV.</p>
-            <p>
-              7. Chance to win exciting prizes and goodies </p>
-            <p>
-              8. Free food, snacks, and beverages will be provided for the
-              participants.
-            </p>
-          </div>
+      <div className={styles.layout}>
+        <ol className={styles.grid}>
+          {takeaways.map(({ n, title, body }) => (
+            <li key={n} className={styles.card}>
+              <span className={styles.index} aria-hidden="true">
+                {n}
+              </span>
+              <h3 className={styles.cardTitle}>{title}</h3>
+              <p className={styles.cardBody}>{body}</p>
+            </li>
+          ))}
+        </ol>
+
+        <div
+          className={`winFrame ${styles.posterFrame}`}
+          data-win-title="Scan_To_Register"
+        >
+          <a
+            href={registrationFormLink}
+            target="_blank"
+            rel="noreferrer"
+            className={styles.qrLink}
+          >
+            <Image
+              src={encodeURI(qr)}
+              alt="HackIndore 4.0 registration QR code"
+              className={styles.poster}
+              sizes="(max-width: 900px) 80vw, 360px"
+              width={1000}
+              height={1000}
+            />
+          </a>
+          <p className={styles.qrCaption}>Scan to register</p>
         </div>
-        <div className={styles.image}>
-          <Image
-            src={poster}
-            alt="poster"
-            className={styles.img}
-            sizes="100vw"
-            height={0}
-            width={0}
-            style={{ height: "auto", width: "100%" }}
-          />
-        </div>
-      </Stack>
+      </div>
     </section>
   );
 };

@@ -1,6 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Ubuntu:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Ubuntu:wght@400;500&family=Silkscreen:wght@400;700&family=VT323&display=swap");
 
 :root {
+  /* ---------- HackIndore 4.0 retro-pixel theme ---------- */
+  --hi-void: #01030e;
+  --hi-deep: #02061a;
+  --hi-navy: #061640;
+  --hi-blue-900: #061d6b;
+  --hi-blue-700: #0d34b8;
+  --hi-blue: #1a54ff;
+  --hi-blue-400: #5b8bff;
+  --hi-blue-200: #bad0ff;
+  --hi-white: #ffffff;
+
+  --hi-line: rgba(255, 255, 255, 0.85);
+  --hi-line-soft: rgba(255, 255, 255, 0.28);
+  --hi-panel: rgba(6, 20, 64, 0.55);
+  --hi-panel-solid: #061134;
+  --hi-glow: rgba(38, 98, 255, 0.55);
+
+  --font-display: "Silkscreen", "Courier New", monospace;
+  --font-mono: "VT323", ui-monospace, monospace;
+
+  /* Classic cursor arrow used as a decorative motif */
+  --hi-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 17'%3E%3Cpath d='M1 .8V15.5L4.6 12l2.3 4.6 2-1-2.2-4.4H11z' fill='%23ffffff' stroke='%230b1a4a' stroke-width='.8'/%3E%3C/svg%3E");
+
   --green: #64ffda;
   --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
   --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -118,7 +141,6 @@ body {
   font-size: var(--fs-400);
   padding: 0;
   font-family: "Poppins", sans-serif !important;
-  overflow-x: hidden;
 }
 
 .heading {
@@ -163,62 +185,79 @@ body {
   margin: 0;
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
+html {
+  overflow-x: clip;
+  overflow-y: scroll;
 }
 
 body {
+  overflow: clip;
+  max-width: 100vw;
   color: white !important;
-  background-image: linear-gradient(to right bottom,
-      #190031,
-      #260d44,
-      #361857,
-      #46236c,
-      #572e81,
-      #562f7d,
-      #542f7a,
-      #533076,
-      #3f265a,
-      #2d1c3f,
-      #1c1225,
-      #06000b);
-  /* background: linear-gradient(109.6deg, rgb(45, 11, 92) 11.2%, rgb(144, 6, 161) 58.7%, #003ba9 100.2%); */
-  /* background: linear-gradient(91.1deg, rgb(57, 31, 105) -2.3%, rgb(115, 43, 155) 44.4%, rgb(63, 15, 135) 103.4%); */
-
-
+  background-color: var(--hi-void);
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    radial-gradient(120% 80% at 50% 10%, rgba(26, 84, 255, 0.45) 0%, rgba(9, 26, 86, 0.35) 40%, rgba(1, 3, 14, 0) 72%),
+    radial-gradient(65% 50% at 10% 4%, rgba(150, 190, 255, 0.28) 0%, rgba(1, 3, 14, 0) 60%),
+    radial-gradient(90% 70% at 92% 80%, rgba(13, 52, 184, 0.28) 0%, rgba(1, 3, 14, 0) 65%),
+    linear-gradient(180deg, var(--hi-deep) 0%, var(--hi-void) 55%, #000208 100%);
+  background-size: 3px 3px, auto, auto, auto, auto;
+  background-repeat: repeat, no-repeat, no-repeat, no-repeat, no-repeat;
   min-height: 100vh;
   background-attachment: fixed;
-  /*TODO remove*/
 }
 
-
-/* Customizing Scroll Bar */
-/* width */
-::-webkit-scrollbar {
+html::-webkit-scrollbar {
   width: 10px;
-  height: 10px;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background-color: hsl(267, 68%, 16%);
+html::-webkit-scrollbar-track {
+  background-color: #030a1e;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  border-radius: 4px;
-  background-color: hsl(298, 70%, 50%);
+html::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  background-color: var(--hi-blue-700);
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background-color: hsl(298, 70%, 45%);
+html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--hi-blue);
 }
 
 a {
   text-decoration: none !important;
+}
+
+::selection {
+  background-color: var(--hi-blue);
+  color: var(--hi-white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--hi-blue-400);
+  outline-offset: 3px;
+}
+
+/* Scanlines + vignette for depth. Sits above content but never intercepts input. */
+.crtOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom,
+      rgba(255, 255, 255, 0.022) 0px,
+      rgba(255, 255, 255, 0.022) 1px,
+      rgba(255, 255, 255, 0) 1px,
+      rgba(255, 255, 255, 0) 3px);
+}
+
+.crtOverlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(125% 105% at 50% 45%,
+      rgba(1, 3, 14, 0) 52%,
+      rgba(1, 3, 14, 0.55) 100%);
 }
 
 .fixed {
@@ -263,11 +302,125 @@ a {
 }
 
 .headings_glittered h1 {
-  font-size: 3rem;
-  line-height: 1;
-  font-weight: 600;
+  font-size: clamp(1.35rem, 4.4vw, 2.6rem);
+  line-height: 1.25;
+  font-weight: 700;
   margin-bottom: 0;
-  font-family: "Overpass", sans-serif;
+  text-transform: uppercase;
+  font-family: var(--font-display);
+}
+
+/* ---------------- Retro window chrome ---------------- */
+/* Apply together with data-win-title="LABEL" to frame any block. */
+.winFrame {
+  position: relative;
+  border: 2px solid var(--hi-line);
+  background-color: var(--hi-panel);
+  padding: 34px 20px 20px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 12px 40px rgba(1, 6, 30, 0.55);
+}
+
+.winFrame::before {
+  content: attr(data-win-title);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  padding: 0 46px 0 8px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--hi-white);
+  background-color: rgba(255, 255, 255, 0.12);
+  border-bottom: 2px solid var(--hi-line);
+}
+
+/* Three pixel window buttons, drawn so they never depend on font glyphs */
+.winFrame::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  right: 10px;
+  width: 7px;
+  height: 7px;
+  background-color: var(--hi-white);
+  box-shadow: -11px 0 0 var(--hi-white), -22px 0 0 var(--hi-white);
+}
+
+/* ---------------- Creation-of-Adam dither motif ---------------- */
+.handsMotif {
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+  line-height: 0;
+  top: 50%;
+  left: 50%;
+  width: min(780px, 88%);
+  translate: -50% -50%;
+  opacity: 0.09;
+}
+
+.handsMotif--stage {
+  width: min(960px, 100%);
+  opacity: 0.26;
+}
+
+.handsMotif img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: none;
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(ellipse 74% 80% at 50% 50%,
+      #000 16%,
+      transparent 76%);
+  mask-image: radial-gradient(ellipse 74% 80% at 50% 50%,
+      #000 16%,
+      transparent 76%);
+}
+
+@media (max-width: 640px) {
+  .handsMotif {
+    opacity: 0.07;
+    width: min(560px, 94%);
+  }
+
+  .handsMotif--stage {
+    opacity: 0.2;
+  }
+}
+
+/* ---------------- Section reveal ---------------- */
+/* Applied by useScrollReveal. Kept out of the default styles so content is
+   visible if the observer never runs. */
+.srHidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.srVisible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms var(--easing), transform 500ms var(--easing);
+}
+
+/* ---------------- Pixel typography helpers ---------------- */
+.pixelText {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.monoText {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
 }
 
 /* ------------------------------------------------ */
@@ -284,8 +437,8 @@ footer {
 /* ------------------------------------------------ */
 
 .bg-gradient {
-  -moz-box-shadow: 6px 11px 69px 25px rgba(255, 255, 255, 0.19) !important;
-  box-shadow: 6px 11px 69px 25px rgba(255, 255, 255, 0.19) !important;
+  -moz-box-shadow: 6px 11px 69px 25px var(--hi-glow) !important;
+  box-shadow: 6px 11px 69px 25px var(--hi-glow) !important;
 }
 
 /* ---------------------- Transitions ---------------------- */
@@ -377,11 +530,11 @@ footer {
 
 .scramblingText_text {
   font-weight: 100;
-  color: #FAFAFA;
+  color: var(--hi-white);
 }
 
 .scramblingText_dud {
-  color: #757575d0;
+  color: rgba(186, 208, 255, 0.55);
 }
 
 /* .navbar-navbar-nav .navbar-nav-link.active {
@@ -445,7 +598,7 @@ a {
 } */
 
 .active {
-  color: rgb(179, 250, 255) !important;
+  color: var(--hi-white) !important;
 }
 
 ul li {
@@ -466,7 +619,7 @@ ul li a::after {
   bottom: 5px;
   width: 100%;
   height: 2px;
-  background-color: rgb(179, 250, 255);
+  background-color: var(--hi-blue-400);
   transform-origin: top right;
   transition: transform 0.5s ease;
   transform: scaleX(0);

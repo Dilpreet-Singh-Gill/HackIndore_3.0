@@ -19,10 +19,11 @@ const LeftBottomSide = ({ children }) => {
 
 const Bar = styled.div`
     display: block;
-    width: 1px;
+    width: 2px;
     height: 90px;
     margin: 0 auto;
-    background-color: yellow;
+    background-color: var(--hi-blue-400);
+    box-shadow: 0 0 12px var(--hi-glow);
 `;
 
 const SocialSideBar = () => {

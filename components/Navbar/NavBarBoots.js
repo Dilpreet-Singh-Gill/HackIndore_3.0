@@ -31,11 +31,21 @@ function NavBar() {
 
     const [expand, setExpand] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [pastHero, setPastHero] = useState(false);
 
     const isMobile = useMediaQuery('(max-width: 991px)');
     useEffect(() => {
-        const onScroll = () => (window.scrollY > 50) ? setScrolled(true) : setScrolled(false);
-        window.addEventListener("scroll", onScroll);
+        const onScroll = () => {
+            setScrolled(window.scrollY > 50);
+            const hero = document.getElementById("hero");
+            if (!hero) {
+                setPastHero(window.scrollY > 50);
+                return;
+            }
+            setPastHero(hero.getBoundingClientRect().bottom <= 80);
+        };
+        onScroll();
+        window.addEventListener("scroll", onScroll, { passive: true });
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
@@ -52,18 +62,34 @@ function NavBar() {
         ].join(" ")} fixed="top" collapseOnSelect expand="lg" variant='dark'>
             <Container>
                 <TransitionElement animationClass='fade' >
-                    <Navbar.Brand className={styles.brand} href="/">
-                        <Image
-                            src="/assets/Hackindore.png"
-                            alt="hackathon"
-                            sizes="100vw"
-                            height={40}
-                            width={120}
-                            style={{ height: "50px", width: "auto" }}   // ✅ keeps proportions
-                            className={styles.logo}
-                            priority={true}
-                        />
-
+                    <Navbar.Brand
+                        className={styles.brand}
+                        href="/"
+                        aria-label="HackIndore 4.0"
+                    >
+                        <span
+                            className={[
+                                styles.logoSwap,
+                                pastHero && styles.logoSwapWordmark,
+                            ].filter(Boolean).join(" ")}
+                        >
+                            <Image
+                                src="/assets/white.png"
+                                alt=""
+                                width={1490}
+                                height={1622}
+                                className={`${styles.logo} ${styles.logoMark}`}
+                                priority={true}
+                            />
+                            <Image
+                                src="/assets/hackindore-wordmark.png"
+                                alt=""
+                                width={1024}
+                                height={194}
+                                className={`${styles.logo} ${styles.logoWordmark}`}
+                                priority={true}
+                            />
+                        </span>
                     </Navbar.Brand>
                     {/* <div className={styles.env}>
                         <code>DEV</code>
@@ -95,7 +121,7 @@ function NavBar() {
                             <>
                                 <div className='d-flex justify-content-center mt-3' style={{ marginBottom: '4rem' }}>
                                     <a
-                                        href="https://unstop.com/o/lrPx7og?lb=a8UehKVd"
+                                        href={registrationFormLink}
                                         onClick={resgistrationFormOnClick}
                                         target='_blank'
                                         className={styles.regisbtn}
@@ -111,9 +137,10 @@ function NavBar() {
                 {!isMobile &&
                     <TransitionElement animationClass='fade' >
                         <a
-                            href="https://unstop.com/o/lrPx7og?lb=a8UehKVd"
+                            href={registrationFormLink}
                             onClick={resgistrationFormOnClick}
-                            target='https://unstop.com/o/lrPx7og?lb=a8UehKVd'
+                            target='_blank'
+                            rel='noreferrer'
                             className={styles.regisbtn}
                         >
                             Register

@@ -13,11 +13,11 @@
     width: 2.5rem;
     cursor: pointer;
     place-items: center;
-    border-radius: 9999px;
-    border-style: none;
+    border-radius: 0;
+    border: 2px solid var(--hi-line);
     padding: 0px;
-    color: hsl(298, 70%, 50%);
-    background-color: hsl(267, 68%, 16%);
+    color: var(--hi-white);
+    background-color: rgba(26, 84, 255, 0.35);
     outline: 2px solid transparent;
     outline-offset: 2px;
     opacity: 0;
@@ -28,7 +28,9 @@
 }
 
 .button:hover {
-    color: hsl(298, 70%, 45%);
+    color: hsl(0, 0%, 100%);
+    background-color: var(--hi-blue);
+    box-shadow: 0 0 22px var(--hi-glow);
 }
 
 .button svg {

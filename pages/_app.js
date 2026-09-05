@@ -7,8 +7,6 @@ import SocialSideBar from "@/components/LeftSideBar/LeftSideBar";
 import PreLoader from "@/components/Preloader/Preloader";
 import styled from 'styled-components';
 import { DefaultSeo } from 'next-seo';
-// import RightSideBar from "@/components/RightSideBar/RightSideBar";
-
 import "@/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/globals.css";
 import useScrollToCurrentHash from './../hooks/useScrollToCurrentHash';
@@ -30,17 +28,17 @@ const App = ({ Component, pageProps }) => {
     return (
         <>
             <DefaultSeo
-                title="HackIndore 3.O"
-                description="HackIndore 3.0 Registration Website"
+                title="HackIndore 4.O"
+                description="HackIndore 4.0 Registration Website"
                 openGraph={{
                     type: 'website',
                     url: '#',
-                    title: 'HackIndore 3.O',
-                    description: 'HackIndore 3.0 Registration Website',
+                    title: 'HackIndore 4.O',
+                    description: 'HackIndore 4.0 Registration Website',
                     images: [
                         {
                             url: '#',
-                            alt: 'HackIndore 3.O',
+                            alt: 'HackIndore 4.O',
                         },
                     ],
                 }}
@@ -57,11 +55,12 @@ const App = ({ Component, pageProps }) => {
             <h1 style={{
                 position: 'absolute',
                 opacity: '0'
-            }}>HackIndore 3.0 - Website for HackIndore Registration</h1>
+            }}>HackIndore 4.0 - Website for HackIndore Registration</h1>
 
             {loading && inProduction ?
                 <PreLoader setLoading={setLoading} />
                 : <StyledContent>
+                    <div className="crtOverlay" aria-hidden="true" />
                     <NavBar />
                     <SocialSideBar />
                     {/* <RightSideBar /> */}

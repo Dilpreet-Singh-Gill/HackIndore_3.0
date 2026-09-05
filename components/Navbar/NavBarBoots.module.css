@@ -1,9 +1,11 @@
 .navbar_div {
-  backdrop-filter: blur(0px);
-  background-color: transparent;
+  background-color: rgba(2, 6, 26, 0.55);
+  border-bottom: 1px solid var(--hi-line-soft);
   transition: backdrop-filter 250ms ease-in-out;
-  font-family: "Overpass" !important;
-  font-size: initial;
+  font-family: var(--font-display) !important;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   backdrop-filter: blur(10px);
 }
 
@@ -17,13 +19,12 @@
 @media screen and (max-width: 991px) {
   .navbar_div {
     backdrop-filter: blur(0px) !important;
-    /* background-color: black !important; */
-    background-color: #3d1766;
-    /* border-bottom: 1px solid rgb(191, 191, 14); */
+    background-color: var(--hi-void);
+    border-bottom: 1px solid var(--hi-line-soft);
   }
 
   .nav {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 
   .nav_div {
@@ -51,9 +52,86 @@
   /* font-weight: bold; */
 }
 
+.logoSwap {
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 38px;
+  transition:
+    width 0.32s cubic-bezier(0.645, 0.045, 0.355, 1),
+    height 0.32s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.logoSwapWordmark {
+  width: min(220px, 42vw);
+  height: 28px;
+}
+
 .logo {
-  width: 40px !important;
-  border-radius: 100%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  translate: 0 -50%;
+  width: auto !important;
+  object-fit: contain;
+  border-radius: 0;
+  filter: drop-shadow(0 0 10px var(--hi-glow));
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.logoMark {
+  height: 38px !important;
+  max-width: 40px;
+  opacity: 1;
+}
+
+.logoWordmark {
+  height: 28px !important;
+  max-width: 220px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+}
+
+.logoSwapWordmark .logoMark {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.86);
+}
+
+.logoSwapWordmark .logoWordmark {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+}
+
+@media screen and (max-width: 991px) {
+  .logoSwap {
+    width: 34px;
+    height: 32px;
+  }
+
+  .logoSwapWordmark {
+    width: min(170px, 48vw);
+    height: 22px;
+  }
+
+  .logoMark {
+    height: 32px !important;
+    max-width: 34px;
+  }
+
+  .logoWordmark {
+    height: 22px !important;
+    max-width: 170px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logoSwap,
+  .logo {
+    transition: none;
+  }
 }
 
 /* @media only screen and (max-width:480px){
@@ -69,18 +147,14 @@
   outline: none;
   text-decoration-style: unset;
 
-  /* --color: #64ffda; */
-  /* --bg-color: #64ffda1a; */
-  --color: rgb(179, 250, 255);
-  --bg-color: rgba(179, 250, 255, 0.1);
+  --color: var(--hi-white);
+  --bg-color: var(--hi-blue);
 
   color: var(--color);
-  /* border: 2px solid var(--color); */
   border: 2px solid var(--color);
-  background-color: transparent;
-  border-radius: 4px;
-  padding: 0.5rem 2rem;
-  /* font-size: 1.25rem; */
+  background-color: rgba(26, 84, 255, 0.2);
+  border-radius: 0;
+  padding: 0.55rem 1.6rem;
   font-family: inherit;
   line-height: 1;
   text-decoration: none;
@@ -89,6 +163,7 @@
   display: inline-block;
   text-decoration-skip-ink: auto;
   position: relative;
+  box-shadow: 3px 3px 0 rgba(6, 29, 107, 0.9);
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
@@ -98,11 +173,13 @@
   outline: none;
   color: var(--color);
   background-color: var(--bg-color);
+  box-shadow: 0 0 0 rgba(6, 29, 107, 0.9), 0 0 22px var(--hi-glow);
+  translate: 3px 3px;
 }
 
 .env {
   background-color: white;
-  border-radius: 5px;
+  border-radius: 0;
   padding: 3px 10px;
   display: flex;
   justify-content: center;
