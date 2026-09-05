@@ -88,20 +88,24 @@ const Hero = () => {
                 <h1 className={styles.wordmarkHeading}>
                   <Image
                     src="/assets/hackindore-wordmark.png"
-                    alt="HackIndore 4.0"
+                    alt=""
                     width={1024}
                     height={194}
                     className={styles.wordmark}
                     priority={true}
                   />
+                  <span className="visually-hidden">
+                    HackIndore 4.0 — 24-hour hackathon at SGSITS Indore
+                  </span>
                 </h1>
               </div>
 
               <div className={styles.ledeBlock}>
                 <p className={styles.lede}>
                   <strong>#include</strong> is back with SGSITS&apos; biggest
-                  hackathon. HackIndore 3.0 set the bar high &mdash; this time
-                  we&apos;re going <strong>bigger, bolder &amp; better.</strong>
+                  hackathon. HackIndore 3.0 set the bar high. <strong>HackIndore 4.0 </strong>
+                  is gonna surpass it. This time we&apos;re going{" "}
+                  <strong>bigger, better &amp; bolder.</strong>
                 </p>
 
                 <ul className={styles.statRow}>
@@ -149,6 +153,7 @@ const Hero = () => {
                     href={registrationFormLink}
                     onClick={resgistrationFormOnClick}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className={styles.email_link}
                   >
                     Register Now

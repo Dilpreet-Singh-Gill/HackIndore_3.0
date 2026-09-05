@@ -1,6 +1,6 @@
-# Hack-Indore-3.0 | HackIndore Registration Website | Next.js
+# HackIndore 4.0 | HackIndore Registration Website | Next.js
 
-- Developed a website for the Hack-Indore-3.0 Hackathon so that everyone can know about the event and register for it
+- Developed a website for the HackIndore 4.0 Hackathon so that everyone can know about the event and register for it
 - Visit the [live](https://www.hackindore.tech/) website at [https://www.hackindore.tech/](https://www.hackindore.tech/)
 
 ## Run Website Locally

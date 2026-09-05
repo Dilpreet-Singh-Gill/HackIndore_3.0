@@ -32,7 +32,7 @@ const PreLoader = ({ setLoading }) => {
   return (
     <>
       <div className={styles.background}>
-        <span className={styles.loader}>HackIndore 4.O</span>
+        <span className={styles.loader}>HackIndore 4.0</span>
         <div className={styles.typing}>
           <TypingAnimation
             className={styles.typing}

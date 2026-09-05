@@ -1,0 +1,24 @@
+{
+  "name": "HackIndore 4.0",
+  "short_name": "HackIndore",
+  "description": "24-hour student hackathon by #include Club at SGSITS Indore. 27–28 September 2026.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#01030e",
+  "theme_color": "#1a54ff",
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/assets/white.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

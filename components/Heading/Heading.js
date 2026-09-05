@@ -6,7 +6,7 @@ const Heading = ({ children, eyebrow }) => {
     <div className={styles.headingWrapper}>
       <div className={styles.headingWrapper_div}>
         {eyebrow && <p className={styles.eyebrow}>{eyebrow}</p>}
-        <h1 className={styles.text}>{children}</h1>
+        <h2 className={styles.text}>{children}</h2>
         <span className={styles.rule} aria-hidden="true" />
       </div>
     </div>

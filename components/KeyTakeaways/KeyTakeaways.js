@@ -82,7 +82,7 @@ const KeyTakeaways = () => {
           <a
             href={registrationFormLink}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className={styles.qrLink}
           >
             <Image

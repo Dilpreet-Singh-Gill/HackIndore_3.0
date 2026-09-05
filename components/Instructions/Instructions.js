@@ -55,7 +55,7 @@ const Instructions = () => {
         <div className={styles.image}>
           <Image
             src={instImage}
-            alt="image"
+            alt="Students collaborating during a previous HackIndore at SGSITS"
             className={styles.img}
             sizes="100vw"
             height={0}

@@ -41,12 +41,16 @@ const Map = () => {
             <Grid item xs={12} marginBottom={2}>
               <p className={styles.small1}>Call us :</p>
               {contactDetails.numbers.map(number =>
-                <p className={styles.small}>{number}</p>
+                <p className={styles.small} key={number}>
+                  <a href={`tel:${number.replace(/\s/g, "")}`}>{number}</a>
+                </p>
               )}
             </Grid>
             <Grid item xs={12} marginBottom={2}>
               <p className={styles.small1}>Email us :</p>
-              <p className={styles.small}>{contactDetails.email}</p>
+              <p className={styles.small}>
+                <a href={`mailto:${contactDetails.email}`}>{contactDetails.email}</a>
+              </p>
             </Grid>
             <Grid item xs={12} marginBottom={2}>
               <p className={styles.small1}>Meet us :</p>
@@ -61,7 +65,7 @@ const Map = () => {
               width="100%"
               height="100%"
               frameBorder="0"
-              title="map"
+              title="SGSITS Indore campus map"
               marginHeight={0}
               marginWidth={0}
               scrolling="no"

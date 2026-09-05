@@ -26,6 +26,12 @@
   margin-bottom: 0px !important;
 }
 
+.small a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .ending {
   font-size: 13px;
   text-align: center;

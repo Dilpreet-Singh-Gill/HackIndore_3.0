@@ -54,7 +54,7 @@ const AboutUs = () => {
         >
           <Image
             src="/images/Team_image2.png"
-            alt="HackIndore team"
+            alt="#include Club team at SGSITS Indore, organizers of HackIndore"
             className={styles.teamPhoto}
             width={853}
             height={632}

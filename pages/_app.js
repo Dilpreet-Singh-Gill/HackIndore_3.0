@@ -7,6 +7,7 @@ import SocialSideBar from "@/components/LeftSideBar/LeftSideBar";
 import PreLoader from "@/components/Preloader/Preloader";
 import styled from 'styled-components';
 import { DefaultSeo } from 'next-seo';
+import { defaultSeoConfig, jsonLd } from "@/util/seo";
 import "@/node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "@/styles/globals.css";
 import useScrollToCurrentHash from './../hooks/useScrollToCurrentHash';
@@ -27,51 +28,34 @@ const App = ({ Component, pageProps }) => {
 
     return (
         <>
-            <DefaultSeo
-                title="HackIndore 4.O"
-                description="HackIndore 4.0 Registration Website"
-                openGraph={{
-                    type: 'website',
-                    url: '#',
-                    title: 'HackIndore 4.O',
-                    description: 'HackIndore 4.0 Registration Website',
-                    images: [
-                        {
-                            url: '#',
-                            alt: 'HackIndore 4.O',
-                        },
-                    ],
-                }}
-            />
+            <DefaultSeo {...defaultSeoConfig} />
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="color-scheme" content="dark light" />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                />
             </Head>
             <Script
                 src="https://kit.fontawesome.com/a076d05399.js"
                 crossorigin="anonymous"
             />
 
-            <h1 style={{
-                position: 'absolute',
-                opacity: '0'
-            }}>HackIndore 4.0 - Website for HackIndore Registration</h1>
-
-            {loading && inProduction ?
+            {loading && inProduction && (
                 <PreLoader setLoading={setLoading} />
-                : <StyledContent>
-                    <div className="crtOverlay" aria-hidden="true" />
-                    <NavBar />
-                    <SocialSideBar />
-                    {/* <RightSideBar /> */}
+            )}
+            <StyledContent>
+                <div className="crtOverlay" aria-hidden="true" />
+                <NavBar />
+                <SocialSideBar />
 
-                    <main className='mainComponent'>
-                        <Component {...pageProps} />
-                        <Footer />
-                    </main>
+                <main className='mainComponent'>
+                    <Component {...pageProps} />
+                    <Footer />
+                </main>
 
-                </StyledContent>
-            }
+            </StyledContent>
         </>
     );
 }

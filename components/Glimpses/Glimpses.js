@@ -4,16 +4,16 @@ import styles from "./Glimpses.module.css";
 import useScrollReveal from "@/hooks/useScrollReveal";
 
 const shots = [
-  { file: "Hack1.JPG", alt: "HackIndore glimpse" },
-  { file: "WhatsApp Image 2026-09-06 at 1.21.00 AM.jpeg", alt: "HackIndore glimpse" },
-  { file: "Hack3.JPG", alt: "HackIndore glimpse" },
-  { file: "Hack5.JPG", alt: "HackIndore glimpse" },
-  { file: "WhatsApp Image 2026-09-06 at 1.16.39 AM.jpeg", alt: "HackIndore glimpse" },
-  { file: "Hack6.JPG", alt: "HackIndore glimpse" },
-  { file: "WhatsApp Image 2026-09-06 at 1.21.24 AM.jpeg", alt: "HackIndore glimpse" },
-  { file: "Hack7.JPG", alt: "HackIndore glimpse" },
-  { file: "WhatsApp Image 2026-09-06 at 2.28.55 AM.jpeg", alt: "HackIndore glimpse" },
-  { file: "Hack8.JPG", alt: "HackIndore glimpse" },
+  { file: "Hack1.JPG", alt: "HackIndore teams coding together at SGSITS" },
+  { file: "WhatsApp Image 2026-09-06 at 1.21.00 AM.jpeg", alt: "HackIndore participants during the onsite event" },
+  { file: "Hack3.JPG", alt: "Mentors reviewing projects at HackIndore" },
+  { file: "Hack5.JPG", alt: "HackIndore opening or briefing session" },
+  { file: "WhatsApp Image 2026-09-06 at 1.16.39 AM.jpeg", alt: "Students presenting ideas at HackIndore" },
+  { file: "Hack6.JPG", alt: "HackIndore workspace filled with student teams" },
+  { file: "WhatsApp Image 2026-09-06 at 1.21.24 AM.jpeg", alt: "HackIndore crowd at SGSITS Indore" },
+  { file: "Hack7.JPG", alt: "Winners and organizers at a previous HackIndore" },
+  { file: "WhatsApp Image 2026-09-06 at 2.28.55 AM.jpeg", alt: "Night hacking session at HackIndore" },
+  { file: "Hack8.JPG", alt: "Group photo from a previous HackIndore edition" },
 ];
 
 const srcFor = (file) => encodeURI(`/previous_images/${file}`);

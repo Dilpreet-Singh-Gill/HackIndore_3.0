@@ -4,8 +4,11 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head>
+                <meta name="theme-color" content="#01030e" />
                 <link rel="icon" type="image/png" href="/assets/white.png" />
                 <link rel="shortcut icon" type="image/png" href="/assets/white.png" />
+                <link rel="apple-touch-icon" href="/assets/white.png" />
+                <link rel="manifest" href="/site.webmanifest" />
 
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />

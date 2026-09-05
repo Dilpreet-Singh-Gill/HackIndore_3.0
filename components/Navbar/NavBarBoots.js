@@ -124,6 +124,7 @@ function NavBar() {
                                         href={registrationFormLink}
                                         onClick={resgistrationFormOnClick}
                                         target='_blank'
+                                        rel='noopener noreferrer'
                                         className={styles.regisbtn}
                                     >
                                         Register
@@ -140,7 +141,7 @@ function NavBar() {
                             href={registrationFormLink}
                             onClick={resgistrationFormOnClick}
                             target='_blank'
-                            rel='noreferrer'
+                            rel='noopener noreferrer'
                             className={styles.regisbtn}
                         >
                             Register
