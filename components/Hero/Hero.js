@@ -28,6 +28,18 @@ const stats = [
   { value: "SGSITS", label: "Indore" },
 ];
 
+const hotNews = [
+  {
+    tag: "LIVE",
+    headline: "Registrations are live on Unstop",
+    href: registrationFormLink,
+  },
+  {
+    tag: "NEW",
+    headline: "Themes are out",
+  },
+];
+
 const Hero = () => {
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState("true");
   const [scrollIndicatorIsMount, setScrollIndicatorIsMount] = useState(false);
@@ -74,13 +86,13 @@ const Hero = () => {
       <div className={styles.rays} aria-hidden="true" />
 
       <div className={styles.featureGridContainer}>
-        <div className={styles.heroGrid}>
-          <div className={styles.contentCol}>
-            <TransitionElement
-              animationClass="fadeup"
-              mountDelay={mountDelay}
-              loaderDelay={loaderDelay}
-            >
+        <TransitionElement
+          animationClass="fadeup"
+          mountDelay={mountDelay}
+          loaderDelay={loaderDelay}
+        >
+          <div className={styles.heroGrid}>
+            <div className={styles.contentCol}>
               <div className={styles.titleBlock}>
                 <p className={styles.presents}>
                   <span className={styles.hash}>#include</span> presents
@@ -118,15 +130,59 @@ const Hero = () => {
                 </ul>
               </div>
 
-              <div
-                className={`winFrame ${styles.resumeFrame}`}
-                data-win-title="Boost_Your_Resume"
-              >
-                <ul className={styles.highlights}>
-                  {resumeHighlights.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+              <div className={styles.resumeNewsRow}>
+                <div
+                  className={`winFrame ${styles.resumeFrame}`}
+                  data-win-title="Boost_Your_Resume"
+                >
+                  <ul className={styles.highlights}>
+                    {resumeHighlights.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className={styles.newsStage}>
+                  <span className={styles.newsDeck} aria-hidden="true" />
+                  <span className={styles.newsDeck} aria-hidden="true" />
+                  <aside className={styles.newsBox} aria-label="Hot news">
+                    <div className={styles.newsBar}>
+                      <span className={styles.newsTitle}>HOT_NEWS</span>
+                      <span className={styles.newsSignal}>
+                        <span className={styles.newsPulse} aria-hidden="true" />
+                        ON AIR
+                      </span>
+                    </div>
+                    <ul className={styles.newsList}>
+                      {hotNews.map((item) => {
+                        const body = (
+                          <>
+                            <span className={styles.newsLive}>{item.tag}</span>
+                            <span className={styles.newsHeadline}>{item.headline}</span>
+                          </>
+                        );
+
+                        return (
+                          <li key={item.headline} className={styles.newsItem}>
+                            {item.href ? (
+                              <a
+                                href={item.href}
+                                onClick={resgistrationFormOnClick}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={styles.newsLink}
+                              >
+                                {body}
+                              </a>
+                            ) : (
+                              <div className={styles.newsStatic}>{body}</div>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </aside>
+                </div>
               </div>
 
               <div className={styles.taglineBlock}>
@@ -163,22 +219,22 @@ const Hero = () => {
                   </Link>
                 </div>
               </div>
-            </TransitionElement>
-          </div>
+            </div>
 
-          <div className={styles.visualCol} aria-hidden="true">
-            <span className={styles.figureGlow} />
-            <Image
-              src="/assets/hero-figure.png"
-              alt=""
-              width={345}
-              height={351}
-              className={styles.figure}
-              style={{ width: "auto", height: "62rem", maxWidth: "none" }}
-              priority={true}
-            />
+            <div className={styles.visualCol} aria-hidden="true">
+              <span className={styles.figureGlow} />
+              <Image
+                src="/assets/hero-figure.png"
+                alt=""
+                width={345}
+                height={351}
+                className={styles.figure}
+                style={{ width: "auto", height: "62rem", maxWidth: "none" }}
+                priority={true}
+              />
+            </div>
           </div>
-        </div>
+        </TransitionElement>
 
         <div className={styles.scrollIndicatorWrapper}>
           <Link
