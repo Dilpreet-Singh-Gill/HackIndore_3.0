@@ -40,6 +40,7 @@
   align-self: start;
   width: 100%;
   height: auto;
+  background-color: #000;
 }
 
 .teamPhoto {
@@ -49,6 +50,7 @@
   max-width: 100%;
   aspect-ratio: 853 / 632;
   object-fit: contain;
+  background-color: #000;
   border: 2px solid var(--hi-line-soft);
 }
 

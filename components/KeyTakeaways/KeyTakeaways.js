@@ -4,7 +4,7 @@ import Heading from "../Heading/Heading";
 import Image from "next/image";
 import { registrationFormLink } from "@/util/config";
 
-const qr = "/Hackindore 4.0 QR.png";
+const qr = "/4 qr photo.jpeg";
 
 const takeaways = [
   {
@@ -87,11 +87,11 @@ const KeyTakeaways = () => {
           >
             <Image
               src={encodeURI(qr)}
-              alt="HackIndore 4.0 registration QR code"
+              alt="HackIndore 4.0 poster with registration QR code"
               className={styles.poster}
               sizes="(max-width: 900px) 80vw, 360px"
-              width={1000}
-              height={1000}
+              width={1200}
+              height={1600}
             />
           </a>
           <p className={styles.qrCaption}>Scan to register</p>

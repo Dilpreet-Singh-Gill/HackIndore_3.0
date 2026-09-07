@@ -53,11 +53,11 @@ const AboutUs = () => {
           data-win-title="The_Team"
         >
           <Image
-            src="/images/Team_image2.png"
+            src={encodeURI("/team photo.png")}
             alt="#include Club team at SGSITS Indore, organizers of HackIndore"
             className={styles.teamPhoto}
-            width={853}
-            height={632}
+            width={3840}
+            height={1920}
             style={{ width: "100%", height: "auto" }}
           />
         </div>

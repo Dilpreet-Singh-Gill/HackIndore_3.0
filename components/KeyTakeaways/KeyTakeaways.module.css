@@ -81,7 +81,7 @@
   height: auto !important;
   max-width: 100%;
   aspect-ratio: 1;
-  background-color: #fff;
+  background-color: transparent;
   border: 2px solid var(--hi-line-soft);
   object-fit: contain;
 }
