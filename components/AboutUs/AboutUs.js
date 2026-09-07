@@ -14,11 +14,8 @@ const AboutUs = () => {
         <Heading eyebrow="Who we are">About us</Heading>
       </div>
 
-      <div className={styles.layout}>
-        <div
-          className={`winFrame ${styles.copyFrame}`}
-          data-win-title="#Include_Club"
-        >
+      <div className={`winFrame ${styles.frame}`} data-win-title="#Include_Club">
+        <div className={styles.copy}>
           <p className={styles.lede}>
             We are club <strong>#include</strong>, the official techno learning
             club of Information Technology Department, SGSITS. We believe in
@@ -48,19 +45,13 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <div
-          className={`winFrame ${styles.stackFrame}`}
-          data-win-title="The_Team"
-        >
-          <Image
-            src={encodeURI("/team photo.png")}
-            alt="#include Club team at SGSITS Indore, organizers of HackIndore"
-            className={styles.teamPhoto}
-            width={3840}
-            height={1920}
-            style={{ width: "100%", height: "auto" }}
-          />
-        </div>
+        <Image
+          src={encodeURI("/team photo.png")}
+          alt="#include Club team at SGSITS Indore, organizers of HackIndore"
+          className={styles.teamPhoto}
+          width={3840}
+          height={1920}
+        />
       </div>
     </section>
   );

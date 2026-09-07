@@ -38,6 +38,10 @@ const hotNews = [
     tag: "NEW",
     headline: "Themes are out",
   },
+  {
+    tag: "SOON",
+    headline: "Problem statements releasing soon",
+  },
 ];
 
 const Hero = () => {

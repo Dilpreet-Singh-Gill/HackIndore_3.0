@@ -248,7 +248,7 @@ export const timelineData = [
   },
   {
     text: "Problem Statement Release",
-    date: "September 07 2026",
+    date: "September 08 2026",
   },
   {
     text: "Registration Ends",
