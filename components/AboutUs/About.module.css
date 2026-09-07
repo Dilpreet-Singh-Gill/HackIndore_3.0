@@ -4,15 +4,19 @@
 }
 
 .frame {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 1.75rem;
+  align-items: center;
   margin-top: 2rem;
-  padding: 34px 0 0 !important;
   overflow: hidden;
 }
 
 .copy {
-  padding: 0 20px 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
 }
 
 .footerRow {
@@ -20,6 +24,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.75rem 1rem;
+  margin-top: auto;
 }
 
 .clubMark {
@@ -29,7 +34,35 @@
   filter: drop-shadow(0 0 10px var(--hi-glow));
 }
 
+.visual {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  isolation: isolate;
+  min-height: 12rem;
+}
+
+.glow {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -6%;
+  height: 52%;
+  pointer-events: none;
+  z-index: 0;
+  background: radial-gradient(
+    closest-side,
+    rgba(170, 208, 255, 0.42) 0%,
+    rgba(26, 84, 255, 0.28) 42%,
+    rgba(1, 3, 14, 0) 76%
+  );
+  filter: blur(22px);
+}
+
 .teamPhoto {
+  position: relative;
+  z-index: 1;
   display: block;
   width: 100% !important;
   height: auto !important;
@@ -37,6 +70,21 @@
   object-fit: contain;
   background: none;
   border: 0;
+  filter: saturate(1.06) contrast(1.04);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.45) 78%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    #000 0%,
+    #000 58%,
+    rgba(0, 0, 0, 0.45) 78%,
+    transparent 100%
+  );
 }
 
 .lede {
@@ -88,19 +136,18 @@
   }
 
   .frame {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
     margin-top: 1.3rem;
   }
 
-  .copy {
-    padding: 0 14px 1rem;
+  .visual {
+    max-width: 420px;
+    margin: 0 auto;
   }
 }
 
 @media only screen and (max-width: 520px) {
-  .copy {
-    padding: 0 12px 0.9rem;
-  }
-
   .lede {
     font-size: 1rem;
   }

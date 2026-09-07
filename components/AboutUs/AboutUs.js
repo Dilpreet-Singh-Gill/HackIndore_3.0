@@ -45,13 +45,16 @@ const AboutUs = () => {
           </div>
         </div>
 
-        <Image
-          src={encodeURI("/team photo.png")}
-          alt="#include Club team at SGSITS Indore, organizers of HackIndore"
-          className={styles.teamPhoto}
-          width={3840}
-          height={1920}
-        />
+        <div className={styles.visual}>
+          <span className={styles.glow} aria-hidden="true" />
+          <Image
+            src={encodeURI("/team photo.png")}
+            alt="#include Club team at SGSITS Indore, organizers of HackIndore"
+            className={styles.teamPhoto}
+            width={3840}
+            height={1920}
+          />
+        </div>
       </div>
     </section>
   );
