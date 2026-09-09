@@ -31,16 +31,12 @@ const stats = [
 const hotNews = [
   {
     tag: "LIVE",
-    headline: "Registrations are live on Unstop",
+    headline: "Registration and PPT round is live on Unstop",
     href: registrationFormLink,
   },
   {
     tag: "NEW",
-    headline: "Themes are out",
-  },
-  {
-    tag: "SOON",
-    headline: "Problem statements releasing soon",
+    headline: "Problem statements are out",
   },
 ];
 
